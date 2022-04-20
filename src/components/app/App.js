@@ -6,6 +6,8 @@ import LessonsList from "../../pages/lessonsList/LessonsList";
 import Lesson from "../../pages/lesson/Lesson";
 import Timer from "../../pages/timer/Timer";
 
+import "../../style/style.scss";
+
 function App() {
   return (
     <BrowserRouter>

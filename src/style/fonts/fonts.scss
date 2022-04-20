@@ -1,0 +1,29 @@
+@font-face {
+  font-weight: 300;
+  font-family: "Fira Sans Condensed";
+  font-style: normal;
+  src: url("FiraSansCondensed-Light.eot");
+  src: url("FiraSansCondensed-Light.eot?#iefix") format("embedded-opentype"),
+    url("FiraSansCondensed-Light.woff") format("woff"),
+    url("FiraSansCondensed-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-weight: 500;
+  font-family: "Fira Sans Condensed";
+  font-style: normal;
+  src: url("FiraSansCondensed-Medium.eot");
+  src: url("FiraSansCondensed-Medium.eot?#iefix") format("embedded-opentype"),
+    url("FiraSansCondensed-Medium.woff") format("woff"),
+    url("FiraSansCondensed-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "Fira Sans Condensed";
+  font-style: normal;
+  src: url("FiraSansCondensed-Bold.eot");
+  src: url("FiraSansCondensed-Bold.eot?#iefix") format("embedded-opentype"),
+    url("FiraSansCondensed-Bold.woff") format("woff"),
+    url("FiraSansCondensed-Bold.ttf") format("truetype");
+}
