@@ -44,6 +44,14 @@ a {
   }
 }
 
+.app {
+  display: flex;
+}
+
+main {
+  width: 100%;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

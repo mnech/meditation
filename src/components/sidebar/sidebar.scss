@@ -2,7 +2,8 @@
 
 .sidebar {
   position: relative;
-  flex: 1;
+  width: 20%;
+  max-width: 18rem;
   min-height: 100vh;
   background-color: $primary-light;
   border-right: 0.5px solid $color-grey;
