@@ -1,1 +1,10 @@
-//.
+@import "../../style/style";
+
+.home {
+  display: flex;
+  background-color: $primary-light;
+
+  &__container {
+    flex: 6;
+  }
+}
