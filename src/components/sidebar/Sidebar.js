@@ -1,3 +1,5 @@
+import { Link, NavLink } from "react-router-dom";
+
 import "./sidebar.scss";
 import userIcon from "../../resources/icons/user.svg";
 import studyIcon from "../../resources/icons/study.svg";
@@ -10,27 +12,52 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar__top">
-        <h1 className="logo">meditation</h1>
+        <Link to="/">
+          <h1 className="logo">meditation</h1>
+        </Link>
       </div>
       <hr />
       <div className="sidebar__center">
         <nav className="sidebar__menu">
           <ul>
             <li>
-              <img src={userIcon} alt="user" />
-              <span>Профиль</span>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#9f0013" : "inherit",
+                })}
+                to="/"
+              >
+                <img src={userIcon} alt="user" />
+                <span>Профиль</span>
+              </NavLink>
             </li>
             <li>
-              <img src={studyIcon} alt="study" />
-              <span>Обучение</span>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#9f0013" : "inherit",
+                })}
+                to="/lessons"
+              >
+                <img src={studyIcon} alt="study" />
+                <span>Обучение</span>
+              </NavLink>
             </li>
             <li>
-              <img src={timerIcon} alt="timer" />
-              <span>Таймер</span>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#9f0013" : "inherit",
+                })}
+                to="/timer"
+              >
+                <img src={timerIcon} alt="timer" />
+                <span>Таймер</span>
+              </NavLink>
             </li>
             <li>
+              {/* <Link to="/"> */}
               <img src={logoutIcon} alt="logout" />
               <span>Выйти</span>
+              {/* </Link> */}
             </li>
           </ul>
         </nav>
