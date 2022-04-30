@@ -58,10 +58,10 @@ function Sidebar() {
               </NavLink>
             </li>
             <li>
-              {/* <Link to="/"> */}
-              <img src={logoutIcon} alt="logout" />
-              <span>Выйти</span>
-              {/* </Link> */}
+              <Link to="/">
+                <img src={logoutIcon} alt="logout" />
+                <span>Выйти</span>
+              </Link>
             </li>
           </ul>
         </nav>
