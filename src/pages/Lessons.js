@@ -1,5 +1,11 @@
+import LesonsList from "../components/lessonsList/LessonsList";
+
 function Lessons() {
-  return <div>Lessons</div>;
+  return (
+    <div>
+      <LesonsList />
+    </div>
+  );
 }
 
 export default Lessons;
