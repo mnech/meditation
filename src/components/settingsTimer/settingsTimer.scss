@@ -1,0 +1,47 @@
+.settings-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  &__value {
+    color: var(--primary-dark);
+    font-weight: 700;
+    font-size: 4rem;
+
+    span {
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+  }
+
+  &__slider {
+    width: 30rem;
+    height: 3rem;
+    margin-top: 1rem;
+    padding: 0 0.2rem;
+    background: var(--color-white);
+    border: 3px solid var(--primary-dark);
+    border-radius: 20px;
+    outline: none;
+    appearance: none;
+  }
+
+  &__slider::-webkit-slider-thumb {
+    width: 2.2rem;
+    height: 2.2rem;
+    background: var(--primary);
+    border-radius: 100%;
+    cursor: pointer;
+    appearance: none;
+  }
+
+  &__slider::-moz-range-thumb {
+    width: 2.2rem;
+    height: 2.2rem;
+    background: var(--primary);
+    border-radius: 100%;
+    cursor: pointer;
+  }
+}

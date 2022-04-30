@@ -1,19 +1,23 @@
 import { Link, NavLink } from "react-router-dom";
 
 import "./sidebar.scss";
-import userIcon from "../../resources/icons/user.svg";
-import studyIcon from "../../resources/icons/study.svg";
-import timerIcon from "../../resources/icons/timer.svg";
-import logoutIcon from "../../resources/icons/logout.svg";
-import sunIcon from "../../resources/icons/sun.svg";
-import moonIcon from "../../resources/icons/moon.svg";
+import logo from "../../resources/icons/logo.png";
+import userIcon from "../../resources/icons/sidebar/user.svg";
+import studyIcon from "../../resources/icons/sidebar/study.svg";
+import timerIcon from "../../resources/icons/sidebar/timer.svg";
+import logoutIcon from "../../resources/icons/sidebar/logout.svg";
+import sunIcon from "../../resources/icons/mode/sun.svg";
+import moonIcon from "../../resources/icons/mode/moon.svg";
 
 function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar__top">
         <Link to="/">
-          <h1 className="logo">meditation</h1>
+          <div className="logo">
+            <h1 className="logo__title">meditation</h1>
+            <img src={logo} alt="Logo" className="logo__img" />
+          </div>
         </Link>
       </div>
       <hr />
@@ -23,7 +27,7 @@ function Sidebar() {
             <li>
               <NavLink
                 style={({ isActive }) => ({
-                  color: isActive ? "#9f0013" : "inherit",
+                  color: isActive ? "#be483e" : "inherit",
                 })}
                 to="/"
               >
@@ -34,7 +38,7 @@ function Sidebar() {
             <li>
               <NavLink
                 style={({ isActive }) => ({
-                  color: isActive ? "#9f0013" : "inherit",
+                  color: isActive ? "#be483e" : "inherit",
                 })}
                 to="/lessons"
               >
@@ -45,7 +49,7 @@ function Sidebar() {
             <li>
               <NavLink
                 style={({ isActive }) => ({
-                  color: isActive ? "#9f0013" : "inherit",
+                  color: isActive ? "#be483e" : "inherit",
                 })}
                 to="/timer"
               >
