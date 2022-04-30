@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-import SettingsTimer from "../../components/settingsTimer/SettingsTimer";
-import TimerAnimation from "../../components/timerAnimation/TimerAnimation";
-
-import "./timer.scss";
+import SettingsTimer from "../components/settingsTimer/SettingsTimer";
+import TimerAnimation from "../components/timerAnimation/TimerAnimation";
 
 function Timer() {
   const [showSettings, setShowSettings] = useState(true);

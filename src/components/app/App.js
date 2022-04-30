@@ -6,11 +6,11 @@ import Spinner from "../spinner/Spinner";
 
 import "../../style/style.scss";
 
-const Profile = lazy(() => import("../../pages/profile/Profile"));
-const Login = lazy(() => import("../../pages/login/Login"));
-const LessonsList = lazy(() => import("../../pages/lessonsList/LessonsList"));
-const Lesson = lazy(() => import("../../pages/lesson/Lesson"));
-const Timer = lazy(() => import("../../pages/timer/Timer"));
+const Profile = lazy(() => import("../../pages/Profile"));
+const Login = lazy(() => import("../../pages/Login"));
+const LessonsList = lazy(() => import("../../pages/Lessons"));
+const Lesson = lazy(() => import("../../pages/SingleLesson"));
+const Timer = lazy(() => import("../../pages/Timer"));
 
 function App() {
   return (
