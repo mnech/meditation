@@ -8,4 +8,8 @@
   border: none;
   border-radius: 20px;
   cursor: pointer;
+
+  &-dark {
+    background-color: var(--primary-dark);
+  }
 }

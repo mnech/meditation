@@ -1,0 +1,56 @@
+.single-lesson {
+  display: flex;
+  background-color: var(--secondary-dark);
+  padding: 4rem 5rem;
+  min-height: 100vh;
+
+  &__left {
+    flex: 3;
+  }
+
+  &__right {
+    flex: 5;
+    padding-left: 5rem;
+  }
+
+  &__wrapper {
+    padding: 4rem 10rem;
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    padding: 1.5rem 5rem;
+    color: var(--primary);
+    font-weight: 500;
+    font-size: 1.8rem;
+    text-align: center;
+    border-radius: 10px;
+    background-color: var(--primary-light);
+  }
+
+  &__desc {
+    color: var(--primary-dark);
+    font-weight: 300;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    border-radius: 10px;
+    margin: 1rem auto;
+    padding: 2rem 5rem;
+    background: rgba($color: #fff, $alpha: 50%);
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: flex-end;
+
+    .btn {
+      margin-top: 2rem;
+      margin-left: 1rem;
+    }
+  }
+}
