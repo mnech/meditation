@@ -1,7 +1,6 @@
 .sidebar {
-  position: relative;
-  width: 20%;
-  max-width: 18rem;
+  position: fixed;
+  width: 18rem;
   min-height: 100vh;
   background-color: var(--color-white);
   border-right: 0.5px solid var(--color-grey);
