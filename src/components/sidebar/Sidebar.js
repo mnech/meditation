@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+
+import { AuthContext } from "../../context/AuthContext";
 
 import "./sidebar.scss";
 import logo from "../../resources/icons/logo.png";
@@ -10,6 +13,13 @@ import sunIcon from "../../resources/icons/mode/sun.svg";
 import moonIcon from "../../resources/icons/mode/moon.svg";
 
 function Sidebar() {
+  const { dispatch } = useContext(AuthContext);
+
+  const logout = () => {
+    localStorage.setItem("user", null);
+    dispatch({ type: "LOGOUT" });
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -58,10 +68,10 @@ function Sidebar() {
               </NavLink>
             </li>
             <li>
-              <Link to="/">
+              <button type="button" className="logout" onClick={logout}>
                 <img src={logoutIcon} alt="logout" />
-                <span>Выйти</span>
-              </Link>
+                Выйти
+              </button>
             </li>
           </ul>
         </nav>

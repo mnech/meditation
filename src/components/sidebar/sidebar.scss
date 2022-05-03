@@ -57,6 +57,17 @@
           width: 100%;
           padding: 1rem 2rem;
         }
+
+        .logout {
+          display: flex;
+          width: 100%;
+          padding: 1rem 2rem;
+          color: var(--primary-dark);
+          font-weight: 500;
+          font-size: 1.2rem;
+          background: none;
+          border: none;
+        }
       }
 
       :hover {
