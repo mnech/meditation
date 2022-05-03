@@ -2,7 +2,7 @@ import Link from "react-router-dom";
 import PropTypes from "prop-types";
 
 import "./singleLesson.scss";
-import test from "../resources/img/lessons/lesson.jpg";
+import test from "../../resources/img/lessons/lesson.jpg";
 
 function SingleLesson({ name, desc, picture }) {
   return (

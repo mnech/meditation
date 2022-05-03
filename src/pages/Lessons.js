@@ -1,6 +1,6 @@
 import LesonsList from "../components/lessonsList/LessonsList";
 
-import SingleLesson from "./SingleLesson";
+import SingleLesson from "./singleLesson/SingleLesson";
 
 function Lessons() {
   const data = {

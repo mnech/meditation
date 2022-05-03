@@ -35,19 +35,19 @@ function LessonsList() {
   ];
 
   function renderItems(items) {
-    function completeItem(complete) {
+    const completeItem = (complete) => {
       if (complete) {
         return <img src={doneIcon} alt="done" className="lesson__done" />;
       }
       return null;
-    }
+    };
 
-    function arrowItem(countItems, i) {
+    const arrowItem = (countItems, i) => {
       if (countItems - 1 > i) {
         return <img src={arrowIcon} alt="arrow" className="lessons__arrow" />;
       }
       return null;
-    }
+    };
 
     const countItems = items.length;
 

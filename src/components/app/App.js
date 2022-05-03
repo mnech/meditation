@@ -1,18 +1,28 @@
-import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense, useCallback, useContext } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Sidebar from "../sidebar/Sidebar";
 import Spinner from "../spinner/Spinner";
 
 import "../../style/style.scss";
+import { AuthContext } from "../../context/AuthContext";
 
 const Profile = lazy(() => import("../../pages/Profile"));
-const Login = lazy(() => import("../../pages/Login"));
+const Login = lazy(() => import("../../pages/login/Login"));
 const LessonsList = lazy(() => import("../../pages/Lessons"));
-const Lesson = lazy(() => import("../../pages/SingleLesson"));
+const Lesson = lazy(() => import("../../pages/singleLesson/SingleLesson"));
 const Timer = lazy(() => import("../../pages/Timer"));
 
 function App() {
+  const { currentUser } = useContext(AuthContext);
+
+  const RequireAuth = useCallback(
+    ({ children }) => {
+      return currentUser ? children : <Navigate to="/login" />;
+    },
+    [currentUser],
+  );
+
   return (
     <BrowserRouter>
       <div className="app">
@@ -21,11 +31,25 @@ function App() {
           <Suspense fallback={<Spinner className="spinner" />}>
             <Routes>
               <Route path="/">
-                <Route index element={<Profile />} />
                 <Route path="login" element={<Login />} />
+                <Route
+                  index
+                  element={
+                    <RequireAuth>
+                      <Profile />
+                    </RequireAuth>
+                  }
+                />
                 <Route path="lessons">
                   <Route index element={<LessonsList />} />
-                  <Route path=":id" element={<Lesson />} />
+                  <Route
+                    path=":id"
+                    element={
+                      <RequireAuth>
+                        <Lesson />
+                      </RequireAuth>
+                    }
+                  />
                 </Route>
                 <Route path="timer" element={<Timer />} />
               </Route>
