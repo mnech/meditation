@@ -1,4 +1,4 @@
-.login {
+.registration {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +23,8 @@
     border-radius: 5px;
   }
 
-  &__password {
+  &__password,
+  &__email {
     margin-top: 2rem;
   }
 
@@ -43,16 +44,6 @@
 
     .btn {
       margin-top: 0;
-    }
-  }
-
-  &__registration {
-    color: var(--primary-dark);
-    font-weight: 300;
-    font-size: 1.2rem;
-
-    &:hover {
-      color: var(--primary);
     }
   }
 }

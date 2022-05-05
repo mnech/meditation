@@ -9,6 +9,9 @@ import { AuthContext } from "../../context/AuthContext";
 
 const Profile = lazy(() => import("../../pages/Profile"));
 const Login = lazy(() => import("../../pages/login/Login"));
+const Registration = lazy(() =>
+  import("../../pages/registration/Registration"),
+);
 const LessonsList = lazy(() => import("../../pages/Lessons"));
 const Lesson = lazy(() => import("../../pages/singleLesson/SingleLesson"));
 const Timer = lazy(() => import("../../pages/Timer"));
@@ -32,6 +35,7 @@ function App() {
             <Routes>
               <Route path="/">
                 <Route path="login" element={<Login />} />
+                <Route path="registration" element={<Registration />} />
                 <Route
                   index
                   element={

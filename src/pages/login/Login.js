@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebase";
 
@@ -54,9 +54,14 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="btn btn-dark">
-          Войти
-        </button>
+        <div className="login__wrapper">
+          <button type="submit" className="btn btn-dark">
+            Войти
+          </button>
+          <Link to="/registration" className="login__registration">
+            Регистрация
+          </Link>
+        </div>
         {errorItem()}
       </form>
     </div>
