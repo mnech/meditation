@@ -1,21 +1,30 @@
 import "./registration.scss";
 
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { serverTimestamp, doc, setDoc } from "firebase/firestore";
+import { Formik, Form, useField } from "formik";
+import { object, string } from "yup";
 import { db, auth } from "../../services/firebase";
 
 import { AuthContext } from "../../context/AuthContext";
 
+function CustomInput(props) {
+  const [field, meta] = useField(props);
+  return (
+    <>
+      <input {...props} {...field} />
+      {meta.touched && meta.error ? (
+        <div className="error">{meta.error}</div>
+      ) : null}
+    </>
+  );
+}
+
 function Registration() {
   const [error, setError] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
-
   const { dispatch } = useContext(AuthContext);
 
   const errorItem = () => {
@@ -29,8 +38,7 @@ function Registration() {
     return null;
   };
 
-  const handleRegistration = async (e) => {
-    e.preventDefault();
+  const handleRegistration = async ({ name, email, password }) => {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       await setDoc(doc(db, "users", res.user.uid), {
@@ -48,33 +56,37 @@ function Registration() {
 
   return (
     <div className="registration">
-      <form onSubmit={handleRegistration} className="registration__form">
-        <input
-          type="text"
-          placeholder="Имя"
-          className="registration__input registration__name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Почта"
-          className="registration__input registration__email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Пароль"
-          className="registration__input registration__password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" className="btn btn-dark">
-          Зарегистрироваться
-        </button>
-        {errorItem()}
-      </form>
+      <Formik
+        initialValues={{
+          name: "",
+          email: "",
+          password: "",
+        }}
+        validationSchema={object({
+          name: string()
+            .min(2, "Минимум 2 символа!")
+            .required("Обязательное поле!"),
+          email: string()
+            .email("Неправильный адрес почты!")
+            .required("Обязательное поле!"),
+          password: string()
+            .min(6, "Минимум 6 символов!")
+            .required("Обязательное поле!"),
+        })}
+        onSubmit={(data) => {
+          handleRegistration(data);
+        }}
+      >
+        <Form className="registration__form">
+          <CustomInput type="text" name="name" placeholder="Имя" />
+          <CustomInput type="email" name="email" placeholder="Почта" />
+          <CustomInput type="text" name="password" placeholder="Пароль" />
+          <button type="submit" className="btn btn-dark">
+            Зарегистрироваться
+          </button>
+          {errorItem()}
+        </Form>
+      </Formik>
     </div>
   );
 }
