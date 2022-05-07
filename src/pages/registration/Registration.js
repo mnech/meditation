@@ -1,59 +1,9 @@
-import "./registration.scss";
-
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { serverTimestamp, doc, setDoc } from "firebase/firestore";
-import { Formik, Form, useField } from "formik";
+import { Formik, Form } from "formik";
 import { object, string } from "yup";
-import { db, auth } from "../../services/firebase";
+import PropTypes from "prop-types";
+import CustomInput from "../../components/CustomInput";
 
-import { AuthContext } from "../../context/AuthContext";
-
-function CustomInput(props) {
-  const [field, meta] = useField(props);
-  return (
-    <>
-      <input {...props} {...field} />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </>
-  );
-}
-
-function Registration() {
-  const [error, setError] = useState(false);
-  const navigate = useNavigate();
-  const { dispatch } = useContext(AuthContext);
-
-  const errorItem = () => {
-    if (error) {
-      return (
-        <span className="registration__error">
-          Произошла ошибка. Попробуйте еще раз
-        </span>
-      );
-    }
-    return null;
-  };
-
-  const handleRegistration = async ({ name, email, password }) => {
-    try {
-      const res = await createUserWithEmailAndPassword(auth, email, password);
-      await setDoc(doc(db, "users", res.user.uid), {
-        name,
-        email,
-        password,
-        timeStamp: serverTimestamp(),
-      });
-      dispatch({ type: "LOGIN", payload: res.user });
-      navigate("/");
-    } catch (err) {
-      setError(true);
-    }
-  };
-
+function Registration({ error, onSubmitForm }) {
   return (
     <div className="registration">
       <Formik
@@ -74,21 +24,33 @@ function Registration() {
             .required("Обязательное поле!"),
         })}
         onSubmit={(data) => {
-          handleRegistration(data);
+          onSubmitForm(data);
         }}
       >
-        <Form className="registration__form">
+        <Form className="form">
           <CustomInput type="text" name="name" placeholder="Имя" />
           <CustomInput type="email" name="email" placeholder="Почта" />
           <CustomInput type="text" name="password" placeholder="Пароль" />
           <button type="submit" className="btn btn-dark">
             Зарегистрироваться
           </button>
-          {errorItem()}
+          {error ? (
+            <div className="error">Произошла ошибка. Попробуйте еще раз</div>
+          ) : null}
         </Form>
       </Formik>
     </div>
   );
 }
+
+Registration.propTypes = {
+  error: PropTypes.bool,
+  onSubmitForm: PropTypes.func,
+};
+
+Registration.defaultProps = {
+  error: false,
+  onSubmitForm: () => {},
+};
 
 export default Registration;

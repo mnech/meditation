@@ -1,71 +1,52 @@
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../services/firebase";
+import { Link } from "react-router-dom";
+import { Formik, Form } from "formik";
+import PropTypes from "prop-types";
+import CustomInput from "../../components/CustomInput";
 
-import "./login.scss";
-import { AuthContext } from "../../context/AuthContext";
-
-function Login() {
-  const [error, setError] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const navigate = useNavigate();
-
-  const { dispatch } = useContext(AuthContext);
-
-  const errorItem = () => {
-    if (error) {
-      return (
-        <span className="login__error">Почта или пароль введены неверно!</span>
-      );
-    }
-    return null;
-  };
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const { user } = userCredential;
-        dispatch({ type: "LOGIN", payload: user });
-        navigate("/");
-      })
-      .catch(() => {
-        setError(true);
-      });
-  };
+function Login({ error, onSubmitForm, errorSubmit }) {
+  const errorMsg = "Почта или пароль введены неверно!";
 
   return (
     <div className="login">
-      <form onSubmit={handleLogin} className="login__form">
-        <input
-          type="email"
-          placeholder="Почта"
-          className="login__input login__email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Пароль"
-          className="login__input login__password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <div className="login__wrapper">
-          <button type="submit" className="btn btn-dark">
-            Войти
-          </button>
-          <Link to="/registration" className="login__registration">
-            Регистрация
-          </Link>
-        </div>
-        {errorItem()}
-      </form>
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        onSubmit={(data) => {
+          onSubmitForm(data);
+        }}
+      >
+        <Form className="form">
+          <CustomInput type="email" name="email" placeholder="Почта" />
+          <CustomInput type="password" name="password" placeholder="Пароль" />
+          <div className="wrapper">
+            <button type="submit" className="btn btn-dark">
+              Войти
+            </button>
+            <Link to="/registration" className="registration">
+              Регистрация
+            </Link>
+          </div>
+          {error ? (
+            <div className="error">Почта или пароль введены неверно!</div>
+          ) : null}
+        </Form>
+      </Formik>
     </div>
   );
 }
+
+Login.propTypes = {
+  error: PropTypes.bool,
+  onSubmitForm: PropTypes.func,
+  errorSubmit: PropTypes.func,
+};
+
+Login.defaultProps = {
+  error: false,
+  onSubmitForm: () => {},
+  errorSubmit: () => {},
+};
 
 export default Login;

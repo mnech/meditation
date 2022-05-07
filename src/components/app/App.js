@@ -8,6 +8,9 @@ import "../../style/style.scss";
 import { AuthContext } from "../../context/AuthContext";
 
 const Profile = lazy(() => import("../../pages/Profile"));
+const Authentication = lazy(() =>
+  import("../../pages/authentication/Authentication"),
+);
 const Login = lazy(() => import("../../pages/login/Login"));
 const Registration = lazy(() =>
   import("../../pages/registration/Registration"),
@@ -34,8 +37,21 @@ function App() {
           <Suspense fallback={<Spinner className="spinner" />}>
             <Routes>
               <Route path="/">
-                <Route path="login" element={<Login />} />
-                <Route path="registration" element={<Registration />} />
+                <Route
+                  path="login"
+                  element={
+                    <Authentication dataType="login" Component={Login} />
+                  }
+                />
+                <Route
+                  path="registration"
+                  element={
+                    <Authentication
+                      dataType="registration"
+                      Component={Registration}
+                    />
+                  }
+                />
                 <Route
                   index
                   element={
