@@ -1,6 +1,7 @@
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import CustomInput from "../../components/CustomInput";
 
 function Registration({ error, onSubmitForm }) {
@@ -31,9 +32,12 @@ function Registration({ error, onSubmitForm }) {
           <CustomInput type="text" name="name" placeholder="Имя" />
           <CustomInput type="email" name="email" placeholder="Почта" />
           <CustomInput type="text" name="password" placeholder="Пароль" />
-          <button type="submit" className="btn btn-dark">
-            Зарегистрироваться
-          </button>
+          <div className="wrapper">
+            <button type="submit" className="btn btn-dark">
+              Зарегистрироваться
+            </button>
+            <Link to="/login">Вход</Link>
+          </div>
           {error ? (
             <div className="error">Произошла ошибка. Попробуйте еще раз</div>
           ) : null}

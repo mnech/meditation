@@ -3,9 +3,7 @@ import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
 import CustomInput from "../../components/CustomInput";
 
-function Login({ error, onSubmitForm, errorSubmit }) {
-  const errorMsg = "Почта или пароль введены неверно!";
-
+function Login({ error, onSubmitForm }) {
   return (
     <div className="login">
       <Formik
@@ -24,9 +22,7 @@ function Login({ error, onSubmitForm, errorSubmit }) {
             <button type="submit" className="btn btn-dark">
               Войти
             </button>
-            <Link to="/registration" className="registration">
-              Регистрация
-            </Link>
+            <Link to="/registration">Регистрация</Link>
           </div>
           {error ? (
             <div className="error">Почта или пароль введены неверно!</div>
@@ -40,13 +36,11 @@ function Login({ error, onSubmitForm, errorSubmit }) {
 Login.propTypes = {
   error: PropTypes.bool,
   onSubmitForm: PropTypes.func,
-  errorSubmit: PropTypes.func,
 };
 
 Login.defaultProps = {
   error: false,
   onSubmitForm: () => {},
-  errorSubmit: () => {},
 };
 
 export default Login;

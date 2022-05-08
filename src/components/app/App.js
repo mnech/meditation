@@ -60,8 +60,16 @@ function App() {
                     </RequireAuth>
                   }
                 />
+
                 <Route path="lessons">
-                  <Route index element={<LessonsList />} />
+                  <Route
+                    index
+                    element={
+                      <RequireAuth>
+                        <LessonsList />
+                      </RequireAuth>
+                    }
+                  />
                   <Route
                     path=":id"
                     element={
@@ -71,7 +79,14 @@ function App() {
                     }
                   />
                 </Route>
-                <Route path="timer" element={<Timer />} />
+                <Route
+                  path="timer"
+                  element={
+                    <RequireAuth>
+                      <Timer />
+                    </RequireAuth>
+                  }
+                />
               </Route>
             </Routes>
           </Suspense>

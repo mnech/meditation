@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { serverTimestamp, doc, setDoc } from "firebase/firestore";
-import PropTypes, { oneOfType } from "prop-types";
+import PropTypes from "prop-types";
 
 import { db, auth } from "../../services/firebase";
 import { AuthContext } from "../../context/AuthContext";
