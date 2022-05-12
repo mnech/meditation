@@ -1,6 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -14,3 +20,30 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth();
+
+const getDataLesson = (dataLesson) => {
+  const lesson = dataLesson.data();
+  return {
+    id: dataLesson.id,
+    number: lesson.number,
+    name: lesson.name,
+    thumbnail: lesson.thumbnail,
+    complete: lesson.complete,
+  };
+};
+
+export const getAllLessons = async () => {
+  const querySnapshot = await getDocs(collection(db, "lessons"));
+  const list = [];
+  querySnapshot.forEach((data) => {
+    list.push(getDataLesson(data));
+  });
+  list.sort((a, b) => (a.number > b.number ? 1 : -1));
+  return list;
+};
+
+export const getLesson = async (id) => {
+  const docRef = doc(db, "lessons", id);
+  const docSnap = await getDoc(docRef);
+  return docSnap.data();
+};

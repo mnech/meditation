@@ -15,7 +15,7 @@ const Login = lazy(() => import("../../pages/login/Login"));
 const Registration = lazy(() =>
   import("../../pages/registration/Registration"),
 );
-const LessonsList = lazy(() => import("../../pages/Lessons"));
+const LessonsList = lazy(() => import("../../pages/lessonsList/LessonsList"));
 const Lesson = lazy(() => import("../../pages/singleLesson/SingleLesson"));
 const Timer = lazy(() => import("../../pages/Timer"));
 

@@ -1,0 +1,44 @@
+.lessons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  background-color: var(--secondary-dark);
+
+  &__arrow {
+    margin: 2rem auto;
+  }
+
+  .lesson {
+    width: 20rem;
+    padding-bottom: 3rem;
+    overflow: hidden;
+    background-color: rgba($color: #fff, $alpha: 70%);
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba($color: #000, $alpha: 30%);
+    transition: 0.3s transform;
+
+    &__img {
+      width: 100%;
+    }
+
+    &__name {
+      max-width: 90%;
+      margin: 4rem auto 0;
+      color: var(--primary-dark);
+      font-weight: 500;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    &__done {
+      width: 2rem;
+      margin: 1rem auto 0;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+}
