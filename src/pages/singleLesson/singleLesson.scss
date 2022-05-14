@@ -1,26 +1,11 @@
 .single-lesson {
+  position: relative;
   display: flex;
   min-height: 100vh;
-  padding: 4rem 5rem;
   background-color: var(--secondary-dark);
 
-  &__left {
-    flex: 3;
-  }
-
-  &__right {
-    flex: 5;
-    padding-left: 5rem;
-  }
-
-  &__wrapper {
-    padding: 4rem 10rem;
-  }
-
-  &__img {
-    width: 100%;
-    margin: 0 auto;
-    border-radius: 10px;
+  &__content {
+    padding: 3rem 10rem;
   }
 
   &__title {
@@ -29,7 +14,7 @@
     font-weight: 500;
     font-size: 1.8rem;
     text-align: center;
-    background-color: var(--primary-light);
+    background: rgba($color: #fff, $alpha: 70%);
     border-radius: 10px;
   }
 
@@ -40,16 +25,17 @@
     font-weight: 300;
     font-size: 1.3rem;
     line-height: 2rem;
+    white-space: pre-line;
     background: rgba($color: #fff, $alpha: 50%);
     border-radius: 10px;
   }
 
   &__btns {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 
     .btn {
-      margin-left: 1rem;
+      margin: 1rem;
     }
   }
 }

@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import parse from "html-react-parser";
+
 import { getLesson } from "../../services/firebase";
 
 import "./singleLesson.scss";
 
 function SingleLesson() {
   const { id } = useParams();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
+  const { name, desc } = data;
+  let content = "";
+
+  if (desc) {
+    content = parse(desc);
+  }
 
   useEffect(() => {
     getLesson(id).then((lesson) => setData(lesson));
@@ -14,12 +22,9 @@ function SingleLesson() {
 
   return (
     <div className="single-lesson">
-      <div className="single-lesson__left">
-        <img src={data.thumbnail} alt="name" className="single-lesson__img" />
-      </div>
-      <div className="single-lesson__right">
-        <h2 className="single-lesson__title">{data.name}</h2>
-        <div className="single-lesson__desc">{data.desc}</div>
+      <div className="single-lesson__content">
+        <h2 className="single-lesson__title">{name}</h2>
+        <div className="single-lesson__desc">{content}</div>
         <div className="single-lesson__btns">
           <button type="button" className="btn btn-dark">
             Начать медитацию
