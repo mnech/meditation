@@ -7,6 +7,7 @@ import Spinner from "../spinner/Spinner";
 import "../../style/style.scss";
 import { AuthContext } from "../../context/AuthContext";
 
+const Page404 = lazy(() => import("../../pages/page404/Page404"));
 const Profile = lazy(() => import("../../pages/Profile"));
 const Authentication = lazy(() =>
   import("../../pages/authentication/Authentication"),
@@ -88,6 +89,7 @@ function App() {
                   }
                 />
               </Route>
+              <Route path="*" element={<Page404 />} />
             </Routes>
           </Suspense>
         </main>
