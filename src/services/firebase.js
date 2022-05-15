@@ -6,6 +6,7 @@ import {
   getDocs,
   doc,
   getDoc,
+  updateDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -46,4 +47,12 @@ export const getLesson = async (id) => {
   const docRef = doc(db, "lessons", id);
   const docSnap = await getDoc(docRef);
   return docSnap.data();
+};
+
+export const setCompleteLesson = async (id, complete) => {
+  if (complete) {
+    return;
+  }
+  const docRef = doc(db, "lessons", id);
+  await updateDoc(docRef, { complete: true });
 };
