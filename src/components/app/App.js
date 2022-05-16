@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useContext } from "react";
+import { lazy, Suspense, useCallback, useContext, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Sidebar from "../sidebar/Sidebar";
@@ -22,6 +22,11 @@ const Timer = lazy(() => import("../../pages/Timer"));
 
 function App() {
   const { currentUser } = useContext(AuthContext);
+
+  // timer state
+  const [time, setTime] = useState(15);
+  const [secondsLeft, setSecondsLeft] = useState(0);
+  const [showSettings, setShowSettings] = useState(true);
 
   const RequireAuth = useCallback(
     ({ children }) => {
@@ -84,7 +89,14 @@ function App() {
                   path="timer"
                   element={
                     <RequireAuth>
-                      <Timer />
+                      <Timer
+                        time={time}
+                        setTime={setTime}
+                        secondsLeft={secondsLeft}
+                        setSecondsLeft={setSecondsLeft}
+                        showSettings={showSettings}
+                        setShowSettings={setShowSettings}
+                      />
                     </RequireAuth>
                   }
                 />

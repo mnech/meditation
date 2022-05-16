@@ -8,13 +8,27 @@ import reset from "../../resources/icons/timer/reset.svg";
 
 import "./timerAnimation.scss";
 
-function TimerAnimation({ time, setShowSettings }) {
-  const [secondsLeft, setSecondsLeft] = useState(0);
+function TimerAnimation({
+  time,
+  setShowSettings,
+  secondsLeft,
+  setSecondsLeft,
+}) {
   const [isPaused, setIsPaused] = useState(true);
 
-  function initTimer(minutes) {
+  const setTime = (minutes) => {
     setSecondsLeft(minutes * 60);
-  }
+  };
+
+  const initTimer = () => {
+    if (secondsLeft) {
+      // timer is paused, because user has moved to another page
+      setSecondsLeft(secondsLeft);
+    } else {
+      // first init timer
+      setTime(time);
+    }
+  };
 
   function tick() {
     setSecondsLeft((seconds) => seconds - 1);
@@ -29,8 +43,9 @@ function TimerAnimation({ time, setShowSettings }) {
   }
 
   useEffect(() => {
-    initTimer(time);
-  }, [time]);
+    initTimer();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [time, secondsLeft]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -104,11 +119,15 @@ function TimerAnimation({ time, setShowSettings }) {
 TimerAnimation.propTypes = {
   time: PropTypes.number,
   setShowSettings: PropTypes.func,
+  secondsLeft: PropTypes.number,
+  setSecondsLeft: PropTypes.func,
 };
 
 TimerAnimation.defaultProps = {
   time: "0",
   setShowSettings: () => {},
+  secondsLeft: "0",
+  setSecondsLeft: () => {},
 };
 
 export default TimerAnimation;
