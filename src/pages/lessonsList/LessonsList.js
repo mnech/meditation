@@ -3,26 +3,12 @@ import { useEffect, useState, useMemo } from "react";
 
 import { getAllLessons } from "../../services/firebase";
 import useFetch from "../../hooks/useFetch";
-import ErrorMessage from "../../components/errorMessage/ErrorMessage";
-import Spinner from "../../components/spinner/Spinner";
+import setContent from "../../utils/setContent";
 
 import "./lessonsList.scss";
 
 import doneIcon from "../../resources/icons/lessons/done.svg";
 import arrowIcon from "../../resources/icons/lessons/arrow.svg";
-
-const setContent = (process, Component) => {
-  switch (process) {
-    case "loading":
-      return <Spinner />;
-    case "confirmed":
-      return <Component />;
-    case "error":
-      return <ErrorMessage />;
-    default:
-      throw new Error("Unexpected process state");
-  }
-};
 
 function LessonsList() {
   const [data, setData] = useState([]);
@@ -82,7 +68,7 @@ function LessonsList() {
 
   const elements = useMemo(() => {
     return setContent(process, () => renderItems(data));
-    // eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [process]);
 
   return <div className="lessons">{elements}</div>;

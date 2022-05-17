@@ -30,9 +30,19 @@ function TimerAnimation({
     }
   };
 
-  function tick() {
+  const tick = () => {
     setSecondsLeft((seconds) => seconds - 1);
-  }
+  };
+
+  const stopTimer = () => {
+    setShowSettings(true);
+    setSecondsLeft(0);
+  };
+
+  const resetTimer = () => {
+    setIsPaused(true);
+    setTime(time);
+  };
 
   function addZero(num) {
     if (num < 10) {
@@ -60,6 +70,7 @@ function TimerAnimation({
     }
 
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPaused, secondsLeft]);
 
   const minutes = addZero(Math.floor(secondsLeft / 60));
@@ -73,14 +84,7 @@ function TimerAnimation({
         </span>
       </div>
       <div className="timer__buttons">
-        <button
-          type="button"
-          className="timer__btn"
-          onClick={() => {
-            setIsPaused(true);
-            initTimer(time);
-          }}
-        >
+        <button type="button" className="timer__btn" onClick={resetTimer}>
           <img src={reset} alt="Reset" />
         </button>
         {isPaused || !secondsLeft ? (
@@ -104,11 +108,7 @@ function TimerAnimation({
             <img src={pause} alt="Pause" />
           </button>
         )}
-        <button
-          type="button"
-          className="timer__btn"
-          onClick={() => setShowSettings(true)}
-        >
+        <button type="button" className="timer__btn" onClick={stopTimer}>
           <img src={stop} alt="Stop" />
         </button>
       </div>

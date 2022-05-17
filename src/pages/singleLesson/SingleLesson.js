@@ -4,23 +4,9 @@ import parse from "html-react-parser";
 
 import { getLesson, setCompleteLesson } from "../../services/firebase";
 import useFetch from "../../hooks/useFetch";
-import ErrorMessage from "../../components/errorMessage/ErrorMessage";
-import Spinner from "../../components/spinner/Spinner";
+import setContent from "../../utils/setContent";
 
 import "./singleLesson.scss";
-
-const setContent = (process, Component) => {
-  switch (process) {
-    case "loading":
-      return <Spinner />;
-    case "confirmed":
-      return <Component />;
-    case "error":
-      return <ErrorMessage />;
-    default:
-      throw new Error("Unexpected process state");
-  }
-};
 
 function SingleLesson() {
   const { id } = useParams();
