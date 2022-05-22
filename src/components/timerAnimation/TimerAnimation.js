@@ -1,47 +1,38 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 
-import start from "../../resources/icons/timer/start.svg";
-import pause from "../../resources/icons/timer/pause.svg";
-import stop from "../../resources/icons/timer/stop.svg";
-import reset from "../../resources/icons/timer/reset.svg";
+import { TimerContext } from "../../context/TimerContext";
+
+import startIcon from "../../resources/icons/timer/start.svg";
+import pauseIcon from "../../resources/icons/timer/pause.svg";
+import stopIcon from "../../resources/icons/timer/stop.svg";
+import resetIcon from "../../resources/icons/timer/reset.svg";
 
 import "./timerAnimation.scss";
 
-function TimerAnimation({
-  time,
-  setShowSettings,
-  secondsLeft,
-  setSecondsLeft,
-}) {
+function TimerAnimation({ time, secondsLeft }) {
   const [isPaused, setIsPaused] = useState(true);
-
-  const setTime = (minutes) => {
-    setSecondsLeft(minutes * 60);
-  };
-
-  const initTimer = () => {
-    if (secondsLeft) {
-      // timer is paused, because user has moved to another page
-      setSecondsLeft(secondsLeft);
-    } else {
-      // first init timer
-      setTime(time);
-    }
-  };
+  const { dispatch } = useContext(TimerContext);
 
   const tick = () => {
-    setSecondsLeft((seconds) => seconds - 1);
+    dispatch({ type: "CHANGE_LEFT_TIME", payload: secondsLeft - 1 });
   };
 
-  const stopTimer = () => {
-    setShowSettings(true);
-    setSecondsLeft(0);
+  const start = () => {
+    setIsPaused(false);
   };
 
-  const resetTimer = () => {
+  const stop = () => {
+    dispatch({ type: "STOP_TIMER" });
+  };
+
+  const pause = () => {
     setIsPaused(true);
-    setTime(time);
+  };
+
+  const reset = () => {
+    setIsPaused(true);
+    dispatch({ type: "RESET_TIMER" });
   };
 
   function addZero(num) {
@@ -51,11 +42,6 @@ function TimerAnimation({
 
     return num;
   }
-
-  useEffect(() => {
-    initTimer();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [time, secondsLeft]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -84,32 +70,28 @@ function TimerAnimation({
         </span>
       </div>
       <div className="timer__buttons">
-        <button type="button" className="timer__btn" onClick={resetTimer}>
-          <img src={reset} alt="Reset" />
+        <button type="button" className="timer__btn" onClick={reset}>
+          <img src={resetIcon} alt="Reset" />
         </button>
         {isPaused || !secondsLeft ? (
           <button
             type="button"
             className="timer__btn timer__btn-main"
-            onClick={() => {
-              setIsPaused(false);
-            }}
+            onClick={start}
           >
-            <img src={start} alt="Start" />
+            <img src={startIcon} alt="Start" />
           </button>
         ) : (
           <button
             type="button"
             className="timer__btn timer__btn-main"
-            onClick={() => {
-              setIsPaused(true);
-            }}
+            onClick={pause}
           >
-            <img src={pause} alt="Pause" />
+            <img src={pauseIcon} alt="Pause" />
           </button>
         )}
-        <button type="button" className="timer__btn" onClick={stopTimer}>
-          <img src={stop} alt="Stop" />
+        <button type="button" className="timer__btn" onClick={stop}>
+          <img src={stopIcon} alt="Stop" />
         </button>
       </div>
     </div>
@@ -118,16 +100,12 @@ function TimerAnimation({
 
 TimerAnimation.propTypes = {
   time: PropTypes.number,
-  setShowSettings: PropTypes.func,
   secondsLeft: PropTypes.number,
-  setSecondsLeft: PropTypes.func,
 };
 
 TimerAnimation.defaultProps = {
   time: "0",
-  setShowSettings: () => {},
   secondsLeft: "0",
-  setSecondsLeft: () => {},
 };
 
 export default TimerAnimation;

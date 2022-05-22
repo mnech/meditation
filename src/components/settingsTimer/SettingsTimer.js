@@ -1,8 +1,21 @@
 import PropTypes from "prop-types";
+import { useContext, useState } from "react";
+import { TimerContext } from "../../context/TimerContext";
 
 import "./settingsTimer.scss";
 
-function SetTimer({ time, setTime, setShowSettings }) {
+function SetTimer({ defaultTime }) {
+  const [time, setTime] = useState(defaultTime);
+  const { dispatch } = useContext(TimerContext);
+
+  const changeTime = (e) => {
+    setTime(+e.target.value);
+  };
+
+  const startTimer = () => {
+    dispatch({ type: "SET_TIME", payload: time });
+  };
+
   return (
     <div className="settings-timer">
       <div className="settings-timer__value">
@@ -16,12 +29,12 @@ function SetTimer({ time, setTime, setShowSettings }) {
         value={time}
         name="range"
         step="1"
-        onChange={(e) => setTime(+e.target.value)}
+        onChange={changeTime}
         className="settings-timer__slider"
       />
       <button
         type="button"
-        onClick={() => setShowSettings(false)}
+        onClick={startTimer}
         className="btn settings-timer__start"
       >
         Старт
@@ -31,15 +44,11 @@ function SetTimer({ time, setTime, setShowSettings }) {
 }
 
 SetTimer.propTypes = {
-  time: PropTypes.number,
-  setTime: PropTypes.func,
-  setShowSettings: PropTypes.func,
+  defaultTime: PropTypes.number,
 };
 
 SetTimer.defaultProps = {
-  time: "0",
-  setTime: () => {},
-  setShowSettings: () => {},
+  defaultTime: "0",
 };
 
 export default SetTimer;
