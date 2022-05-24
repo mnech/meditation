@@ -2,7 +2,7 @@ import { createContext, useEffect, useMemo, useReducer } from "react";
 import PropTypes from "prop-types";
 import TimerReducer from "./TimerReducer";
 
-const minutes = localStorage.getItem("defaultTimer") || 15;
+const minutes = +localStorage.getItem("defaultTimer") || 15;
 
 const INITIAL_STATE = {
   time: minutes,
