@@ -1,13 +1,9 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
 import { serverTimestamp, doc, setDoc } from "firebase/firestore";
 import PropTypes from "prop-types";
 
-import { db, auth } from "../../services/firebase";
+import { db, auth, registration, login } from "../../services/firebase";
 import { AuthContext } from "../../context/AuthContext";
 
 import Login from "../login/Login";
@@ -25,16 +21,9 @@ function Authentication({ dataType, Component }) {
       let res = null;
 
       if (dataType === "login") {
-        res = await signInWithEmailAndPassword(auth, email, password);
+        res = await login(email, password);
       } else {
-        // registration
-        res = await createUserWithEmailAndPassword(auth, email, password);
-        await setDoc(doc(db, "users", res.user.uid), {
-          name,
-          email,
-          password,
-          timeStamp: serverTimestamp(),
-        });
+        res = await registration(name, email, password);
       }
 
       // set current user

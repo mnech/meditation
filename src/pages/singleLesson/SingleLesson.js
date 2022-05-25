@@ -1,8 +1,9 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import parse from "html-react-parser";
 
 import { getLesson, setCompleteLesson } from "../../services/firebase";
+import { AuthContext } from "../../context/AuthContext";
 import useFetch from "../../hooks/useFetch";
 import setContent from "../../utils/setContent";
 
@@ -12,6 +13,7 @@ function SingleLesson() {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
   const { fetching, process, setProcess } = useFetch(() =>
     // eslint-disable-next-line no-use-before-define
     getLesson(id).then(onDataLoaded),
@@ -31,13 +33,17 @@ function SingleLesson() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
+  const setComplete = () => {
+    setCompleteLesson(currentUser, id, data.complete);
+  };
+
   const startMeditation = () => {
-    setCompleteLesson(id, data.complete);
+    setComplete();
     navigate("/timer");
   };
 
   const completeLesson = () => {
-    setCompleteLesson(id, data.complete);
+    setComplete();
     navigate("/lessons");
   };
 

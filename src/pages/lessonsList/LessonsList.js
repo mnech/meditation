@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useContext } from "react";
 
 import { getAllLessons } from "../../services/firebase";
 import useFetch from "../../hooks/useFetch";
 import setContent from "../../utils/setContent";
+import { AuthContext } from "../../context/AuthContext";
 
 import "./lessonsList.scss";
 
@@ -12,10 +13,11 @@ import arrowIcon from "../../resources/icons/lessons/arrow.svg";
 
 function LessonsList() {
   const [data, setData] = useState([]);
+  const { currentUser } = useContext(AuthContext);
 
   const { fetching, process, setProcess } = useFetch(() =>
     // eslint-disable-next-line no-use-before-define
-    getAllLessons().then(onDataLoaded),
+    getAllLessons(currentUser).then(onDataLoaded),
   );
 
   const onDataLoaded = (lessons) => {
