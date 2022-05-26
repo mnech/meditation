@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "./profile.scss";
+
 function Profile() {
   return <div className="profile">profile</div>;
 }

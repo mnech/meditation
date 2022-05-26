@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
-import CustomInput from "../../components/CustomInput";
+import CustomInput from "../../components/customInput/CustomInput";
 
 function Login({ error, onSubmitForm }) {
   return (

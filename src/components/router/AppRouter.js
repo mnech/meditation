@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Spinner from "../spinner/Spinner";
 
 const Page404 = lazy(() => import("../../pages/page404/Page404"));
-const Profile = lazy(() => import("../../pages/Profile"));
+const Profile = lazy(() => import("../../pages/profile/Profile"));
 const Authentication = lazy(() =>
   import("../../pages/authentication/Authentication"),
 );

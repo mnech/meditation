@@ -2,7 +2,7 @@ import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import CustomInput from "../../components/CustomInput";
+import CustomInput from "../../components/customInput/CustomInput";
 
 function Registration({ error, onSubmitForm }) {
   return (
