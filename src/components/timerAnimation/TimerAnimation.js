@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 
 import { TimerContext } from "../../context/TimerContext";
+import Modal from "../modal/Modal";
 
 import startIcon from "../../resources/icons/timer/start.svg";
 import pauseIcon from "../../resources/icons/timer/pause.svg";
@@ -12,6 +13,7 @@ import "./timerAnimation.scss";
 
 function TimerAnimation({ time, secondsLeft }) {
   const [isPaused, setIsPaused] = useState(true);
+  const [modalActive, setModalActive] = useState(false);
   const { dispatch } = useContext(TimerContext);
 
   const tick = () => {
@@ -23,7 +25,8 @@ function TimerAnimation({ time, secondsLeft }) {
   };
 
   const stop = () => {
-    dispatch({ type: "STOP_TIMER" });
+    setModalActive(true);
+    // dispatch({ type: "STOP_TIMER" });
   };
 
   const pause = () => {
@@ -94,6 +97,11 @@ function TimerAnimation({ time, secondsLeft }) {
           <img src={stopIcon} alt="Stop" />
         </button>
       </div>
+      <Modal active={modalActive} setActive={setModalActive}>
+        <span>Сохранить время медитации?</span>
+        <button type="button">Сохранить</button>
+        <button type="button">Не сохранять</button>
+      </Modal>
     </div>
   );
 }
