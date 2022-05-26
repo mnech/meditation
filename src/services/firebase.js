@@ -118,3 +118,11 @@ export const setCompleteLesson = (userId, lessonId, complete) => {
     timeStamp: serverTimestamp(),
   });
 };
+
+export const saveMeditationTime = async (userId, seconds) => {
+  await addDoc(collection(db, "meditation_time"), {
+    userId,
+    seconds,
+    timeStamp: serverTimestamp(),
+  });
+};

@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 
 import { TimerContext } from "../../context/TimerContext";
+import { AuthContext } from "../../context/AuthContext";
+import { saveMeditationTime } from "../../services/firebase";
 import Modal from "../modal/Modal";
 
 import startIcon from "../../resources/icons/timer/start.svg";
@@ -14,6 +16,8 @@ import "./timerAnimation.scss";
 function TimerAnimation({ time, secondsLeft }) {
   const [isPaused, setIsPaused] = useState(true);
   const [modalActive, setModalActive] = useState(false);
+  const [savingTime, setSavingTime] = useState(false);
+  const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(TimerContext);
 
   const tick = () => {
@@ -25,8 +29,8 @@ function TimerAnimation({ time, secondsLeft }) {
   };
 
   const stop = () => {
+    setIsPaused(true);
     setModalActive(true);
-    // dispatch({ type: "STOP_TIMER" });
   };
 
   const pause = () => {
@@ -36,6 +40,19 @@ function TimerAnimation({ time, secondsLeft }) {
   const reset = () => {
     setIsPaused(true);
     dispatch({ type: "RESET_TIMER" });
+  };
+
+  const closeTimer = () => {
+    dispatch({ type: "STOP_TIMER" });
+  };
+
+  const saveTime = async () => {
+    const allSeconds = time * 60;
+    const meditationSeconds = allSeconds - secondsLeft;
+    setSavingTime(true);
+    await saveMeditationTime(currentUser, meditationSeconds);
+    setSavingTime(false);
+    closeTimer();
   };
 
   function addZero(num) {
@@ -98,9 +115,25 @@ function TimerAnimation({ time, secondsLeft }) {
         </button>
       </div>
       <Modal active={modalActive} setActive={setModalActive}>
-        <span>Сохранить время медитации?</span>
-        <button type="button">Сохранить</button>
-        <button type="button">Не сохранять</button>
+        <span className="modal__title">Сохранить время медитации?</span>
+        <div className="modal__buttons">
+          <button
+            type="button"
+            className="btn btn-dark"
+            disabled={savingTime}
+            onClick={closeTimer}
+          >
+            Не сохранять
+          </button>
+          <button
+            type="button"
+            className="btn"
+            disabled={savingTime}
+            onClick={saveTime}
+          >
+            Сохранить
+          </button>
+        </div>
       </Modal>
     </div>
   );
