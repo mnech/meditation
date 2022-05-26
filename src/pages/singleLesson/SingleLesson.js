@@ -10,14 +10,17 @@ import setContent from "../../utils/setContent";
 import "./singleLesson.scss";
 
 function SingleLesson() {
-  const { id } = useParams();
   const [data, setData] = useState(null);
-  const navigate = useNavigate();
+  const [savingProgress, setSavingProgress] = useState(false);
+
+  const { id } = useParams();
   const { currentUser } = useContext(AuthContext);
   const { fetching, process, setProcess } = useFetch(() =>
     // eslint-disable-next-line no-use-before-define
     getLesson(id).then(onDataLoaded),
   );
+
+  const navigate = useNavigate();
 
   const onDataLoaded = (lesson) => {
     if (lesson) {
@@ -33,18 +36,19 @@ function SingleLesson() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  const setComplete = () => {
-    setCompleteLesson(currentUser, id, data.complete);
+  const saveAndCloseLesson = async (path) => {
+    setSavingProgress(true);
+    await setCompleteLesson(currentUser, id, data.complete);
+    setSavingProgress(false);
+    navigate(path);
   };
 
   const startMeditation = () => {
-    setComplete();
-    navigate("/timer");
+    saveAndCloseLesson("/timer");
   };
 
   const completeLesson = () => {
-    setComplete();
-    navigate("/lessons");
+    saveAndCloseLesson("/lessons");
   };
 
   const renderItems = () => {
@@ -60,11 +64,17 @@ function SingleLesson() {
             <button
               type="button"
               className="btn btn-dark"
+              disabled={savingProgress}
               onClick={startMeditation}
             >
               Начать медитацию
             </button>
-            <button type="button" className="btn" onClick={completeLesson}>
+            <button
+              type="button"
+              className="btn"
+              disabled={savingProgress}
+              onClick={completeLesson}
+            >
               Завершить урок
             </button>
           </div>
@@ -77,7 +87,7 @@ function SingleLesson() {
   const elements = useMemo(() => {
     return setContent(process, () => renderItems(data));
     // eslint-disable-next-line
-  }, [process]);
+  }, [process, savingProgress]);
 
   return <div className="single-lesson">{elements}</div>;
 }

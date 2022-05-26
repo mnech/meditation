@@ -107,11 +107,12 @@ export const getLesson = async (id) => {
   return docSnap.data();
 };
 
-export const setCompleteLesson = (userId, lessonId, complete) => {
+export const setCompleteLesson = async (userId, lessonId, complete) => {
   if (complete) {
     return;
   }
-  addDoc(collection(db, "user_progress"), {
+
+  await addDoc(collection(db, "user_progress"), {
     userId,
     lessonId,
     complete: true,
