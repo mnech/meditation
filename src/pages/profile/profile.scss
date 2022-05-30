@@ -1,1 +1,71 @@
-//1
+.profile {
+  display: flex;
+  padding: 3rem;
+
+  &__left {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__right {
+    flex: 6;
+  }
+
+  &__img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1rem;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+
+  &__load {
+    width: 8rem;
+    margin-bottom: 1rem;
+    color: transparent;
+  }
+
+  &__load::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  &__load::before {
+    display: inline-block;
+    color: var(--primary-dark);
+    font-weight: 500;
+    font-size: 1rem;
+    white-space: nowrap;
+    outline: none;
+    cursor: pointer;
+    content: "Загрузить аватар \2B73";
+    user-select: none;
+  }
+
+  &__load:hover::before {
+    color: var(--primary);
+  }
+
+  &__load:active {
+    outline: 0;
+  }
+
+  &__name,
+  &__email,
+  &__password-label {
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+
+  &__wrapper {
+    display: flex;
+    margin-top: 3rem;
+
+    .btn {
+      margin-top: 2.3rem;
+    }
+  }
+}

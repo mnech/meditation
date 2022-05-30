@@ -16,6 +16,12 @@ import {
   addDoc,
   serverTimestamp,
 } from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -27,8 +33,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export const auth = getAuth();
+const db = getFirestore(app);
+const auth = getAuth();
+const storage = getStorage();
 
 // auth
 
@@ -120,10 +127,46 @@ export const setCompleteLesson = async (userId, lessonId, complete) => {
   });
 };
 
+// timer
+
 export const saveMeditationTime = async (userId, seconds) => {
   await addDoc(collection(db, "meditation_time"), {
     userId,
     seconds,
     timeStamp: serverTimestamp(),
   });
+};
+
+// other
+
+export const uploadFile = (file, name, setPerc) => {
+  const storageRef = ref(storage, name);
+  const uploadTask = uploadBytesResumable(storageRef, file);
+
+  uploadTask.on(
+    "state_changed",
+    (snapshot) => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      setPerc(progress);
+      // switch (snapshot.state) {
+      //   case "paused":
+      //     console.log("Upload is paused");
+      //     break;
+      //   case "running":
+      //     console.log("Upload is running");
+      //     break;
+      //   default:
+      //     break;
+      // }
+    },
+    () => {
+      // error
+      return null;
+    },
+    () => {
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        return downloadURL;
+      });
+    },
+  );
 };
