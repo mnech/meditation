@@ -12,7 +12,7 @@ import "./profile.scss";
 function Profile() {
   const [file, setFile] = useState(null);
   const [photo, setPhoto] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
   const [loading, setLoading] = useState(true);
 
   const { currentUser } = useContext(AuthContext);
@@ -70,6 +70,7 @@ function Profile() {
           accept=".jpg, .jpeg, .png"
           className="profile__load"
           onChange={changeFile}
+          disabled={loading}
         />
         {errorMsg}
       </div>
