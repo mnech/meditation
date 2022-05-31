@@ -140,8 +140,9 @@ export const saveMeditationTime = async (userId, seconds) => {
 };
 
 // user data
-export const getUserData = () => {
-  return null;
+
+const getUserRef = (userId) => {
+  return doc(db, "users", userId);
 };
 
 export const uploadFile = async (file, name) => {
@@ -154,35 +155,33 @@ export const uploadFile = async (file, name) => {
   return url;
 };
 
+export const getUserData = async (userId) => {
+  const userRef = getUserRef(userId);
+  const docSnap = await getDoc(userRef);
+  return docSnap.data();
+};
+
 export const changeUserPhoto = async (userId, file, name) => {
-  // Create a reference to the file to delete
-  // const desertRef = ref(storage, "images/desert.jpg");
+  const userData = await getUserData(userId);
+  console.log(userData);
+  const userRef = getUserRef(userId);
 
-  // // Delete the file
-  // deleteObject(desertRef)
-  //   .then(() => {
-  //     // File deleted successfully
-  //   })
-  //   .catch((error) => {
-  //     // Uh-oh, an error occurred!
-  //   });
-  const userRef = doc(db, "users", userId);
-  const url = await uploadFile(file, name).then();
+  // upload user photo to storage
+  const url = await uploadFile(file, name);
 
-  if (!url) {
-    return null;
+  // set the photo url and path to data user
+  await updateDoc(userRef, {
+    photo: url,
+    pathPhoto: name,
+  });
+
+  // remove old user photo
+  const oldPhoto = userData.pathPhoto;
+  // console.log(userData);
+  if (oldPhoto) {
+    const oldPhotoRef = ref(storage, userData.pathPhoto);
+    await deleteObject(oldPhotoRef);
   }
 
   return url;
-  // setLoading(false);
-  // if (!userRef) {
-  //   setError(true);
-  // }
-  // console.log(urlFile);
-
-  // // Set the "photo" field of the current user
-  // await updateDoc(userRef, {
-  //   photo: urlFile,
-  //   pathPhoto: name,
-  // });
 };

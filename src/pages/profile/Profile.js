@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useState, useContext } from "react";
 
 import { AuthContext } from "../../context/AuthContext";
-import { changeUserPhoto } from "../../services/firebase";
+import { getUserData, changeUserPhoto } from "../../services/firebase";
 import Spinner from "../../components/spinner/Spinner";
-import ErrorMessage from "../../components/errorMessage/ErrorMessage";
 
 import defaultImage from "../../resources/img/camera_photo.png";
 
@@ -12,8 +11,8 @@ import "./profile.scss";
 function Profile() {
   const [file, setFile] = useState(null);
   const [photo, setPhoto] = useState("");
-  const [error, setError] = useState(true);
-  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
 
@@ -38,7 +37,7 @@ function Profile() {
     return <img src={userPhoto} alt="user" className="profile__img" />;
   }, [loading, userPhoto]);
 
-  const onUpload = (url) => {
+  const onPhotoUpload = (url) => {
     setLoading(false);
     setPhoto(url);
 
@@ -51,9 +50,22 @@ function Profile() {
     if (file) {
       setLoading(true);
       const name = `user_photo/${new Date().getTime()}${file.name}`;
-      changeUserPhoto(currentUser, file, name).then(onUpload);
+      changeUserPhoto(currentUser, file, name).then(onPhotoUpload);
     }
   }, [currentUser, file]);
+
+  useEffect(() => {
+    if (currentUser) {
+      const userData = async () => {
+        setLoading(true);
+        const dataUser = await getUserData(currentUser);
+        setPhoto(dataUser.photo);
+        setLoading(false);
+      };
+
+      userData();
+    }
+  }, [currentUser]);
 
   const errorMsg = error ? (
     <div className="profile__error">
