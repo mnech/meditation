@@ -14,13 +14,15 @@ import {
   where,
   setDoc,
   addDoc,
+  updateDoc,
   serverTimestamp,
 } from "firebase/firestore";
 import {
   getStorage,
   ref,
-  uploadBytesResumable,
+  uploadBytes,
   getDownloadURL,
+  deleteObject,
 } from "firebase/storage";
 
 const firebaseConfig = {
@@ -137,29 +139,50 @@ export const saveMeditationTime = async (userId, seconds) => {
   });
 };
 
-// other
+// user data
+export const getUserData = () => {
+  return null;
+};
 
-export const uploadFile = (file, name, setLoading, setError, setPhoto) => {
-  setLoading(true);
+export const uploadFile = async (file, name) => {
   const storageRef = ref(storage, name);
-  const uploadTask = uploadBytesResumable(storageRef, file);
+  const url = await uploadBytes(storageRef, file)
+    .then((res) => getDownloadURL(res.ref))
+    .catch(() => {
+      return "";
+    });
+  return url;
+};
 
-  uploadTask.on(
-    "state_changed",
-    (snapshot) => {
-      // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    },
-    () => {
-      // error
-      setLoading(false);
-      setError(true);
-    },
-    () => {
-      // upload completed successfully, now we can get the URL
-      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        setPhoto(downloadURL);
-        setLoading(false);
-      });
-    },
-  );
+export const changeUserPhoto = async (userId, file, name) => {
+  // Create a reference to the file to delete
+  // const desertRef = ref(storage, "images/desert.jpg");
+
+  // // Delete the file
+  // deleteObject(desertRef)
+  //   .then(() => {
+  //     // File deleted successfully
+  //   })
+  //   .catch((error) => {
+  //     // Uh-oh, an error occurred!
+  //   });
+  const userRef = doc(db, "users", userId);
+  const url = await uploadFile(file, name).then();
+
+  if (!url) {
+    return null;
+  }
+
+  return url;
+  // setLoading(false);
+  // if (!userRef) {
+  //   setError(true);
+  // }
+  // console.log(urlFile);
+
+  // // Set the "photo" field of the current user
+  // await updateDoc(userRef, {
+  //   photo: urlFile,
+  //   pathPhoto: name,
+  // });
 };

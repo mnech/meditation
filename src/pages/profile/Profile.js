@@ -1,15 +1,21 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useContext } from "react";
 
-import { uploadFile } from "../../services/firebase";
-import defaultImage from "../../resources/img/camera_photo.png";
+import { AuthContext } from "../../context/AuthContext";
+import { changeUserPhoto } from "../../services/firebase";
 import Spinner from "../../components/spinner/Spinner";
 import ErrorMessage from "../../components/errorMessage/ErrorMessage";
+
+import defaultImage from "../../resources/img/camera_photo.png";
+
 import "./profile.scss";
 
 function Profile() {
+  const [file, setFile] = useState(null);
   const [photo, setPhoto] = useState("");
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const { currentUser } = useContext(AuthContext);
 
   const userPhoto = useMemo(() => {
     if (photo) {
@@ -21,21 +27,39 @@ function Profile() {
   const changeFile = (e) => {
     setError(false);
     if (e.target.files.length) {
-      const file = e.target.files[0];
-      const name = new Date().getTime() + file.name;
-      uploadFile(file, name, setLoading, setError, setPhoto);
+      setFile(e.target.files[0]);
     }
   };
 
   const imgContent = useMemo(() => {
-    if (error) {
-      return <ErrorMessage />;
-    }
     if (loading) {
       return <Spinner />;
     }
     return <img src={userPhoto} alt="user" className="profile__img" />;
-  }, [error, loading, userPhoto]);
+  }, [loading, userPhoto]);
+
+  const onUpload = (url) => {
+    setLoading(false);
+    setPhoto(url);
+
+    if (!url) {
+      setError(true);
+    }
+  };
+
+  useEffect(() => {
+    if (file) {
+      setLoading(true);
+      const name = `user_photo/${new Date().getTime()}${file.name}`;
+      changeUserPhoto(currentUser, file, name).then(onUpload);
+    }
+  }, [currentUser, file]);
+
+  const errorMsg = error ? (
+    <div className="profile__error">
+      Не удалось загрузить фото. <br /> Попробуйте снова
+    </div>
+  ) : null;
 
   return (
     <div className="profile">
@@ -47,6 +71,7 @@ function Profile() {
           className="profile__load"
           onChange={changeFile}
         />
+        {errorMsg}
       </div>
       <div className="profile__right">
         <div className="profile__name">Имя: Василий</div>
