@@ -161,27 +161,36 @@ export const getUserData = async (userId) => {
   return docSnap.data();
 };
 
+// export const getUserProgress = async (userId) => {
+//   const userRef = doc(db, "user_progress", userId);
+//   const docSnap = await getDoc(userRef);
+//   return docSnap.data();
+// };
+
 export const changeUserPhoto = async (userId, file, name) => {
-  const userData = await getUserData(userId);
-  console.log(userData);
-  const userRef = getUserRef(userId);
+  try {
+    const { pathPhoto } = await getUserData(userId);
+    const userRef = getUserRef(userId);
 
-  // upload user photo to storage
-  const url = await uploadFile(file, name);
+    // upload user photo to storage
+    const url = await uploadFile(file, name);
+    if (!url) {
+      return "";
+    }
 
-  // set the photo url and path to data user
-  await updateDoc(userRef, {
-    photo: url,
-    pathPhoto: name,
-  });
+    // set the photo url and path to data user
+    await updateDoc(userRef, {
+      photo: url,
+      pathPhoto: name,
+    });
 
-  // remove old user photo
-  const oldPhoto = userData.pathPhoto;
-  // console.log(userData);
-  if (oldPhoto) {
-    const oldPhotoRef = ref(storage, userData.pathPhoto);
-    await deleteObject(oldPhotoRef);
+    // remove old photo
+    if (pathPhoto) {
+      const oldPhotoRef = ref(storage, pathPhoto);
+      await deleteObject(oldPhotoRef);
+    }
+    return url;
+  } catch {
+    return "";
   }
-
-  return url;
 };

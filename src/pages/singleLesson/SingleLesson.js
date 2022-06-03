@@ -15,7 +15,7 @@ function SingleLesson() {
 
   const { id } = useParams();
   const { currentUser } = useContext(AuthContext);
-  const { fetching, process, setProcess } = useFetch(() =>
+  const [getDataLesson, process, setProcess] = useFetch(() =>
     // eslint-disable-next-line no-use-before-define
     getLesson(id).then(onDataLoaded),
   );
@@ -32,7 +32,7 @@ function SingleLesson() {
   };
 
   useEffect(() => {
-    fetching();
+    getDataLesson();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 

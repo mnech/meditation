@@ -12,7 +12,7 @@ function useFetch(callback) {
     }
   };
 
-  return { fetching, process, setProcess };
+  return [fetching, process, setProcess];
 }
 
 export default useFetch;
