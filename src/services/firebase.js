@@ -161,11 +161,31 @@ export const getUserData = async (userId) => {
   return docSnap.data();
 };
 
-// export const getUserProgress = async (userId) => {
-//   const userRef = doc(db, "user_progress", userId);
-//   const docSnap = await getDoc(userRef);
-//   return docSnap.data();
-// };
+export const meditationTime = async (userId) => {
+  let time = 0;
+
+  const timeQuery = query(
+    collection(db, "meditation_time"),
+    where("userId", "==", userId),
+  );
+  const userTime = await getDocs(timeQuery);
+
+  userTime.forEach((data) => {
+    time += data.data().seconds;
+  });
+
+  // convert sec to min
+  time = Math.floor(time / 60);
+
+  return time;
+};
+
+export const allUserData = async (userId) => {
+  const dataUser = await getUserData(userId);
+  const time = await meditationTime(userId);
+
+  return { ...dataUser, time };
+};
 
 export const changeUserPhoto = async (userId, file, name) => {
   try {

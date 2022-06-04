@@ -1,6 +1,10 @@
 .profile {
-  display: flex;
-  padding: 3rem;
+  &__wrapper {
+    display: flex;
+    margin: 0;
+    padding: 3rem;
+    box-shadow: 0 0 5px var(--color-grey-dark);
+  }
 
   &__left {
     display: flex;
@@ -64,15 +68,6 @@
     font-size: 1.2rem;
   }
 
-  &__wrapper {
-    display: flex;
-    margin-top: 3rem;
-
-    .btn {
-      margin-top: 2.3rem;
-    }
-  }
-
   &__error {
     color: var(--primary);
     font-weight: 500;
@@ -83,5 +78,28 @@
   .spinner {
     width: 7.14rem;
     height: 7.14rem;
+  }
+}
+
+.achivements {
+  padding: 3rem;
+
+  &__time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__img {
+    width: 7.14rem;
+  }
+
+  &__desc {
+    margin-top: 1rem;
+    color: var(--primary-dark);
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-align: center;
   }
 }

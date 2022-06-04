@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useState, useContext } from "react";
 
 import { AuthContext } from "../../context/AuthContext";
-import { getUserData, changeUserPhoto } from "../../services/firebase";
+import { allUserData, changeUserPhoto } from "../../services/firebase";
 import useFetch from "../../hooks/useFetch";
 import setContent from "../../utils/setContent";
 import Spinner from "../../components/spinner/Spinner";
 
 import defaultImage from "../../resources/img/camera_photo.png";
+import meditation from "../../resources/icons/achivements/meditation.svg";
 
 import "./profile.scss";
 
@@ -16,12 +17,12 @@ function Profile() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const { name, email } = data;
+  const { name, email, time } = data;
   const { currentUser } = useContext(AuthContext);
 
   const [loadUserData, process, setProcess] = useFetch(() => {
     // eslint-disable-next-line no-use-before-define
-    getUserData(currentUser).then(onLoadData);
+    allUserData(currentUser).then(onLoadData);
   });
 
   const onLoadData = (dataUser) => {
@@ -84,20 +85,34 @@ function Profile() {
   const renderItems = () => {
     return (
       <div className="profile">
-        <div className="profile__left">
-          {imgContent}
-          <input
-            type="file"
-            accept=".jpg, .jpeg, .png"
-            className="profile__load"
-            onChange={changeFile}
-            disabled={loading}
-          />
-          {errorMsg}
+        <div className="profile__wrapper">
+          <div className="profile__left">
+            {imgContent}
+            <input
+              type="file"
+              accept=".jpg, .jpeg, .png"
+              className="profile__load"
+              onChange={changeFile}
+              disabled={loading}
+            />
+            {errorMsg}
+          </div>
+          <div className="profile__right">
+            <div className="profile__name">Имя: {name}</div>
+            <div className="profile__email">Почта: {email}</div>
+          </div>
         </div>
-        <div className="profile__right">
-          <div className="profile__name">Имя: {name}</div>
-          <div className="profile__email">Почта: {email}</div>
+        <div className="achivements">
+          <div className="achivements__time">
+            <img
+              className="achivements__img"
+              src={meditation}
+              alt="meditation"
+            />
+            <div className="achivements__desc">
+              {time} мин. <br /> медитации
+            </div>
+          </div>
         </div>
       </div>
     );
