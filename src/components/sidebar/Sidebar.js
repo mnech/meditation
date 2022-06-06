@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { AuthContext } from "../../context/AuthContext";
+import { DarkModeContext } from "../../context/DarkModeContext";
 
 import "./sidebar.scss";
 import logo from "../../resources/icons/logo.png";
@@ -14,10 +15,15 @@ import moonIcon from "../../resources/icons/mode/moon.svg";
 
 function Sidebar() {
   const { dispatch } = useContext(AuthContext);
+  const { dispatchDarkMode } = useContext(DarkModeContext);
 
   const logout = () => {
     localStorage.setItem("user", null);
     dispatch({ type: "LOGOUT" });
+  };
+
+  const toggleDarkMode = () => {
+    dispatchDarkMode({ type: "TOGGLE" });
   };
 
   return (
@@ -79,7 +85,12 @@ function Sidebar() {
       <div className="sidebar__bottom">
         <label htmlFor="switch" className="switch">
           <img src={sunIcon} alt="sun" />
-          <input type="checkbox" id="switch" className="visually-hidden" />
+          <input
+            type="checkbox"
+            id="switch"
+            className="visually-hidden"
+            onChange={toggleDarkMode}
+          />
           <span>Dark mode</span>
           <img src={moonIcon} alt="moon" />
         </label>
