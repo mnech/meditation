@@ -15,7 +15,7 @@ import moonIcon from "../../resources/icons/mode/moon.svg";
 
 function Sidebar() {
   const { dispatch } = useContext(AuthContext);
-  const { dispatchDarkMode } = useContext(DarkModeContext);
+  const { darkMode, dispatchDarkMode } = useContext(DarkModeContext);
 
   const logout = () => {
     localStorage.setItem("user", null);
@@ -89,6 +89,7 @@ function Sidebar() {
             type="checkbox"
             id="switch"
             className="visually-hidden"
+            checked={darkMode}
             onChange={toggleDarkMode}
           />
           <span>Dark mode</span>

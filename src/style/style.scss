@@ -8,6 +8,7 @@
   --secondary: #eddfd1;
   --secondary-light: #e7edec;
   --secondary-dark: #cadbd7;
+  --color-dark: #3c4a58;
   --color-white: #fff;
   --color-grey: #e0e0e0;
   --color-grey-dark: #b6b5b5;
@@ -57,8 +58,15 @@ a {
   }
 }
 
+button {
+  color: var(--primary-dark);
+}
+
 .app {
   display: flex;
+  min-height: 100vh;
+  color: var(--primary-dark);
+  background-color: var(--primary-light);
 }
 
 main {

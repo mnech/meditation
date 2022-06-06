@@ -57,7 +57,6 @@
     box-shadow: 3px 3px 20px var(--color-grey-dark);
 
     span {
-      color: var(--primary-dark);
       font-weight: 700;
       font-size: 5rem;
     }
@@ -67,7 +66,6 @@
 .modal {
   &__title {
     display: block;
-    color: var(--primary-dark);
     font-weight: 500;
     font-size: 1.2rem;
     text-align: center;

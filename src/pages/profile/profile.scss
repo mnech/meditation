@@ -63,7 +63,6 @@
   &__email,
   &__password-label {
     margin-bottom: 1rem;
-    color: var(--primary-dark);
     font-weight: 500;
     font-size: 1.2rem;
   }
@@ -97,9 +96,23 @@
 
   &__desc {
     margin-top: 1rem;
-    color: var(--primary-dark);
     font-weight: 500;
     font-size: 1.2rem;
     text-align: center;
+  }
+}
+
+//dark mode {
+.dark .profile {
+  &__load::before {
+    color: var(--primary-light);
+  }
+
+  &__load:hover::before {
+    color: var(--primary);
+  }
+
+  &__load:disabled::before {
+    color: var(--color-grey-dark);
   }
 }

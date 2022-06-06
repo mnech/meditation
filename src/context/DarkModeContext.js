@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import DarkModeReducer from "./DarkModeReducer";
 
 const INITIAL_STATE = {
-  darkMode: localStorage.getItem("darkMode") || false,
+  darkMode: localStorage.getItem("darkMode") === "true",
 };
 
 export const DarkModeContext = createContext(INITIAL_STATE);
