@@ -101,18 +101,3 @@
     text-align: center;
   }
 }
-
-//dark mode {
-.dark .profile {
-  &__load::before {
-    color: var(--primary-light);
-  }
-
-  &__load:hover::before {
-    color: var(--primary);
-  }
-
-  &__load:disabled::before {
-    color: var(--color-grey-dark);
-  }
-}

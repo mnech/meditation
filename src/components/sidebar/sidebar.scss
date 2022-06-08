@@ -122,14 +122,3 @@
     }
   }
 }
-
-//dark mode
-.dark .sidebar {
-  &__menu {
-    ul {
-      :hover {
-        background-color: var(--color-dark);
-      }
-    }
-  }
-}

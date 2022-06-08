@@ -44,19 +44,3 @@
     cursor: pointer;
   }
 }
-
-// dark mode
-.dark .settings-timer {
-  &__slider {
-    background: var(--color-dark);
-    border: 2px solid var(--primary-light);
-  }
-
-  &__slider::-webkit-slider-thumb {
-    border: 1px solid var(--primary-light);
-  }
-
-  &__slider::-moz-range-thumb {
-    border: 1px solid var(--primary-light);
-  }
-}

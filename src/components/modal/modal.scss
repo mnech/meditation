@@ -44,10 +44,3 @@
   opacity: 1;
   pointer-events: all;
 }
-
-// dark mode
-.dark .modal {
-  &__content {
-    background-color: var(--color-dark);
-  }
-}
