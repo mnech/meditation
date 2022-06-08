@@ -1,0 +1,141 @@
+@media (max-width: 1200px) {
+  .app {
+    .timer {
+      &__btn {
+        width: 2.8rem;
+        height: 2.8rem;
+
+        img {
+          width: 1.3rem;
+        }
+
+        &-main {
+          width: 3.5rem;
+          height: 3.5rem;
+
+          img {
+            width: 2rem;
+          }
+        }
+      }
+
+      &__time {
+        width: 18rem;
+        height: 18rem;
+
+        span {
+          font-size: 4rem;
+        }
+      }
+    }
+
+    .settings-timer {
+      &__value {
+        font-size: 3rem;
+      }
+
+      &__slider {
+        width: 25rem;
+        height: 2.8rem;
+      }
+
+      &__slider::-webkit-slider-thumb {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      &__slider::-moz-range-thumb {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .app {
+    .single-lesson {
+      &__title {
+        padding: 1rem 3rem;
+        font-size: 1.5rem;
+      }
+
+      &__desc {
+        padding: 1rem 3rem;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .app {
+    .btn {
+      padding: 0.5rem 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .authentication {
+      input {
+        font-size: 1.1rem;
+      }
+
+      .error {
+        font-size: 1.1rem;
+      }
+
+      .wrapper {
+        a {
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .profile {
+      &__left {
+        flex: 2;
+      }
+
+      &__right {
+        flex: 3;
+      }
+    }
+
+    .achivements {
+      padding: 2rem;
+
+      &__img {
+        width: 5rem;
+      }
+    }
+
+    .lessons {
+      .lesson {
+        width: 15rem;
+        padding-bottom: 2rem;
+
+        &__name {
+          margin: 2rem auto 0;
+        }
+      }
+    }
+
+    .single-lesson {
+      &__content {
+        padding: 1rem 2rem;
+      }
+
+      &__title {
+        padding: 1rem;
+        font-size: 1.3rem;
+      }
+
+      &__desc {
+        padding: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+      }
+    }
+  }
+}

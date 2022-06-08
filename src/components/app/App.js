@@ -8,6 +8,7 @@ import { DarkModeContext } from "../../context/DarkModeContext";
 
 import "../../style/style.scss";
 import "../../style/darkMode.scss";
+import "../../style/media.scss";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
