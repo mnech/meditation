@@ -21,7 +21,7 @@
     margin-top: 1rem;
     padding: 0 0.2rem;
     background: var(--color-white);
-    border: 3px solid var(--primary-dark);
+    border: 2px solid var(--primary-dark);
     border-radius: 20px;
     outline: none;
     appearance: none;
@@ -42,5 +42,21 @@
     background: var(--primary);
     border-radius: 100%;
     cursor: pointer;
+  }
+}
+
+// dark mode
+.dark .settings-timer {
+  &__slider {
+    background: var(--color-dark);
+    border: 2px solid var(--primary-light);
+  }
+
+  &__slider::-webkit-slider-thumb {
+    border: 1px solid var(--primary-light);
+  }
+
+  &__slider::-moz-range-thumb {
+    border: 1px solid var(--primary-light);
   }
 }

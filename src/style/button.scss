@@ -13,3 +13,11 @@
     background-color: var(--primary-dark);
   }
 }
+
+.dark .btn {
+  border: 1px solid var(--primary-light);
+
+  &-dark {
+    background-color: var(--color-dark);
+  }
+}

@@ -52,7 +52,7 @@
     width: 22rem;
     height: 22rem;
     background-color: var(--secondary-dark);
-    border: 5.5px solid var(--primary-dark);
+    border: 2px solid var(--primary-dark);
     border-radius: 100%;
     box-shadow: 3px 3px 20px var(--color-grey-dark);
 
@@ -81,5 +81,26 @@
 
   .btn {
     margin: 0 1rem;
+  }
+}
+
+// dark mode
+.dark .timer {
+  &__time {
+    background-color: var(--color-dark);
+    border: 2px solid var(--primary-light);
+    box-shadow: none;
+  }
+
+  &__buttons {
+    :hover {
+      box-shadow: none;
+    }
+  }
+
+  &__btn {
+    &-main {
+      box-shadow: none;
+    }
   }
 }

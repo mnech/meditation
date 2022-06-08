@@ -51,3 +51,10 @@
     }
   }
 }
+
+// dark mode
+.dark .authentication {
+  .form {
+    background-color: var(--color-dark);
+  }
+}
