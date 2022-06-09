@@ -1,15 +1,21 @@
+import PropTypes, { bool } from "prop-types";
+
 import "./navbar.scss";
 
-function Navbar() {
+function Navbar({ activeSidebar, setActiveSidebar }) {
   const openMenu = () => {
-    const d = 1;
+    setActiveSidebar((active) => !active);
   };
 
+  const classes = activeSidebar
+    ? "navbar__hamburger active"
+    : "navbar__hamburger";
+
   return (
-    <div className="navbar">
+    <nav className="navbar">
       <button
         type="button"
-        className="navbar__hamburger"
+        className={classes}
         aria-label="menu"
         onClick={openMenu}
       >
@@ -17,8 +23,18 @@ function Navbar() {
         <span />
         <span />
       </button>
-    </div>
+    </nav>
   );
 }
+
+Navbar.propTypes = {
+  activeSidebar: bool,
+  setActiveSidebar: PropTypes.func,
+};
+
+Navbar.defaultProps = {
+  activeSidebar: false,
+  setActiveSidebar: () => {},
+};
 
 export default Navbar;

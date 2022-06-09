@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import AppRouter from "../router/AppRouter";
@@ -12,14 +12,18 @@ import "../../style/media.scss";
 import Navbar from "../navbar/Navbar";
 
 function App() {
+  const [activeSidebar, setActiveSidebar] = useState(false);
   const { darkMode } = useContext(DarkModeContext);
   const classes = darkMode ? "app dark" : "app";
 
   return (
     <BrowserRouter>
       <div className={classes}>
-        <Navbar />
-        <Sidebar />
+        <Navbar
+          activeSidebar={activeSidebar}
+          setActiveSidebar={setActiveSidebar}
+        />
+        <Sidebar activeSidebar={activeSidebar} />
         <main className="app__main">
           <AppRouter />
         </main>

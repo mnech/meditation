@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { AuthContext } from "../../context/AuthContext";
 import { DarkModeContext } from "../../context/DarkModeContext";
@@ -13,7 +14,7 @@ import logoutIcon from "../../resources/icons/sidebar/logout.svg";
 import sunIcon from "../../resources/icons/mode/sun.svg";
 import moonIcon from "../../resources/icons/mode/moon.svg";
 
-function Sidebar() {
+function Sidebar({ activeSidebar }) {
   const { dispatch } = useContext(AuthContext);
   const { darkMode, dispatchDarkMode } = useContext(DarkModeContext);
 
@@ -26,8 +27,10 @@ function Sidebar() {
     dispatchDarkMode({ type: "TOGGLE" });
   };
 
+  const classes = activeSidebar ? "sidebar active" : "sidebar";
+
   return (
-    <div className="sidebar">
+    <div className={classes}>
       <div className="sidebar__top">
         <Link to="/">
           <div className="logo">
@@ -99,5 +102,13 @@ function Sidebar() {
     </div>
   );
 }
+
+Sidebar.propTypes = {
+  activeSidebar: PropTypes.bool,
+};
+
+Sidebar.defaultProps = {
+  activeSidebar: false,
+};
 
 export default Sidebar;
