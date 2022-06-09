@@ -12,7 +12,13 @@
     }
   }
 
+  .navbar {
+    background-color: var(--color-dark);
+  }
+
   .sidebar {
+    background-color: var(--color-dark);
+
     &__menu {
       ul {
         :hover {
