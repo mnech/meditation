@@ -9,6 +9,7 @@ import { DarkModeContext } from "../../context/DarkModeContext";
 import "../../style/style.scss";
 import "../../style/darkMode.scss";
 import "../../style/media.scss";
+import Navbar from "../navbar/Navbar";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -17,6 +18,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className={classes}>
+        <Navbar />
         <Sidebar />
         <main className="app__main">
           <AppRouter />

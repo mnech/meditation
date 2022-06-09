@@ -1,7 +1,10 @@
 .sidebar {
   position: fixed;
+  z-index: 3;
   width: 18rem;
   min-height: 100vh;
+  overflow: hidden;
+  background-color: var(--primary-light);
   border-right: 0.5px solid var(--color-grey);
 
   &__top {
