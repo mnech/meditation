@@ -17,7 +17,12 @@ function Login({ error, onSubmitForm }) {
       >
         <Form className="form">
           <CustomInput type="email" name="email" placeholder="Почта" />
-          <CustomInput type="password" name="password" placeholder="Пароль" />
+          <CustomInput
+            type="password"
+            name="password"
+            placeholder="Пароль"
+            autoComplete="on"
+          />
           <div className="wrapper">
             <button type="submit" className="btn btn-dark">
               Войти

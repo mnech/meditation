@@ -31,7 +31,12 @@ function Registration({ error, onSubmitForm }) {
         <Form className="form">
           <CustomInput type="text" name="name" placeholder="Имя" />
           <CustomInput type="email" name="email" placeholder="Почта" />
-          <CustomInput type="text" name="password" placeholder="Пароль" />
+          <CustomInput
+            type="text"
+            name="password"
+            placeholder="Пароль"
+            autoComplete="on"
+          />
           <div className="wrapper">
             <button type="submit" className="btn btn-dark">
               Зарегистрироваться

@@ -1,9 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { serverTimestamp, doc, setDoc } from "firebase/firestore";
 import PropTypes from "prop-types";
 
-import { db, auth, registration, login } from "../../services/firebase";
+import { registration, login } from "../../services/firebase";
 import { AuthContext } from "../../context/AuthContext";
 
 import Login from "../login/Login";
