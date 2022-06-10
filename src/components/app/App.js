@@ -23,7 +23,10 @@ function App() {
           activeSidebar={activeSidebar}
           setActiveSidebar={setActiveSidebar}
         />
-        <Sidebar activeSidebar={activeSidebar} />
+        <Sidebar
+          activeSidebar={activeSidebar}
+          setActiveSidebar={setActiveSidebar}
+        />
         <main className="app__main">
           <AppRouter />
         </main>

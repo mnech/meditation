@@ -14,10 +14,20 @@
 
   .navbar {
     background-color: var(--color-dark);
+
+    &__hamburger {
+      background-color: var(--color-dark);
+
+      span {
+        background-color: var(--primary-light);
+      }
+    }
   }
 
   .sidebar {
-    background-color: var(--color-dark);
+    &__content {
+      background-color: var(--color-dark);
+    }
 
     &__menu {
       ul {
