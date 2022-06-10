@@ -164,3 +164,17 @@
     }
   }
 }
+
+@media (max-width: 575px) {
+  .app {
+    .authentication {
+      input {
+        font-size: 1.1 rem;
+      }
+
+      .error {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
