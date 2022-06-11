@@ -1,6 +1,6 @@
 import { createContext, useEffect, useMemo, useReducer } from "react";
 import PropTypes from "prop-types";
-import AuthReducer from "./AuthReducer";
+import AuthReducer from "./reducer/AuthReducer";
 
 const INITIAL_STATE = {
   currentUser: JSON.parse(localStorage.getItem("user")) || null,

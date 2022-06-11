@@ -1,6 +1,6 @@
 import { createContext, useEffect, useMemo, useReducer } from "react";
 import PropTypes from "prop-types";
-import DarkModeReducer from "./DarkModeReducer";
+import DarkModeReducer from "./reducer/DarkModeReducer";
 
 const INITIAL_STATE = {
   darkMode: localStorage.getItem("darkMode") === "true",
