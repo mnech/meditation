@@ -12,6 +12,7 @@ import stopIcon from "../../resources/icons/timer/stop.svg";
 import resetIcon from "../../resources/icons/timer/reset.svg";
 
 import "./timerAnimation.scss";
+import "./timerAnimationMedia.scss";
 
 function TimerAnimation({ time, secondsLeft }) {
   const [isPaused, setIsPaused] = useState(true);

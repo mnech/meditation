@@ -6,10 +6,11 @@ import useFetch from "../../hooks/useFetch";
 import setContent from "../../utils/setContent";
 import Spinner from "../../components/spinner/Spinner";
 
+import "./profile.scss";
+import "./profileMedia.scss";
+
 import defaultImage from "../../resources/img/camera_photo.png";
 import meditation from "../../resources/icons/achivements/meditation.svg";
-
-import "./profile.scss";
 
 function Profile() {
   const [photo, setPhoto] = useState("");

@@ -1,0 +1,51 @@
+@media (max-width: 767px) {
+  .app {
+    .profile {
+      &__left {
+        flex: 2;
+      }
+
+      &__right {
+        flex: 3;
+      }
+    }
+
+    .achivements {
+      padding: 2rem;
+
+      &__img {
+        width: 5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .app {
+    .profile {
+      &__left {
+        flex: 1;
+      }
+
+      &__right {
+        flex: 1;
+      }
+
+      &__name,
+      &__email,
+      &__password-label {
+        font-size: 1rem;
+      }
+    }
+
+    .achivements {
+      &__desc {
+        font-size: 1rem;
+      }
+
+      &__img {
+        width: 4rem;
+      }
+    }
+  }
+}

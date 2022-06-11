@@ -8,6 +8,7 @@ import useFetch from "../../hooks/useFetch";
 import setContent from "../../utils/setContent";
 
 import "./singleLesson.scss";
+import "./singleLessonMedia.scss";
 
 function SingleLesson() {
   const [data, setData] = useState(null);

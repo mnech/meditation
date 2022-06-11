@@ -7,6 +7,7 @@ import setContent from "../../utils/setContent";
 import { AuthContext } from "../../context/AuthContext";
 
 import "./lessonsList.scss";
+import "./lessonsListMedia.scss";
 
 import doneIcon from "../../resources/icons/lessons/done.svg";
 import arrowIcon from "../../resources/icons/lessons/arrow.svg";

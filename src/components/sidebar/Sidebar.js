@@ -9,6 +9,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { DarkModeContext } from "../../context/DarkModeContext";
 
 import "./sidebar.scss";
+import "./sidebarMedia.scss";
+
 import logo from "../../resources/icons/logo.png";
 import userIcon from "../../resources/icons/sidebar/user.svg";
 import studyIcon from "../../resources/icons/sidebar/study.svg";

@@ -1,0 +1,43 @@
+@media (max-width: 767px) {
+  .app {
+    .authentication {
+      input {
+        font-size: 1.1rem;
+      }
+
+      .error {
+        font-size: 1.1rem;
+      }
+
+      .wrapper {
+        a {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .app {
+    .authentication {
+      .form {
+        padding: 0 1.5rem 2rem;
+      }
+
+      input {
+        font-size: 1rem;
+      }
+
+      .error {
+        font-size: 1rem;
+      }
+
+      .wrapper {
+        a {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

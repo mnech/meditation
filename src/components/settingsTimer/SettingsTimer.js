@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { TimerContext } from "../../context/TimerContext";
 
 import "./settingsTimer.scss";
+import "./settingsTimerMedia.scss";
 
 function SetTimer({ defaultTime }) {
   const [time, setTime] = useState(defaultTime);

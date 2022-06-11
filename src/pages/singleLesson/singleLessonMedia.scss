@@ -1,0 +1,62 @@
+@media (max-width: 991px) {
+  .app {
+    .single-lesson {
+      &__title {
+        padding: 1rem 3rem;
+        font-size: 1.5rem;
+      }
+
+      &__desc {
+        padding: 1rem 3rem;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .app {
+    .single-lesson {
+      &__content {
+        padding: 1rem 2rem;
+      }
+
+      &__title {
+        padding: 1rem;
+        font-size: 1.3rem;
+      }
+
+      &__desc {
+        padding: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .app {
+    .single-lesson {
+      &__title {
+        font-size: 1rem;
+      }
+
+      &__content {
+        padding: 1rem;
+      }
+
+      &__desc {
+        font-size: 1rem;
+        line-height: 1.3rem;
+      }
+
+      img {
+        max-width: 20rem;
+        height: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
+}

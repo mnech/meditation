@@ -1,0 +1,27 @@
+@media (max-width: 767px) {
+  .app {
+    .navbar {
+      display: block;
+    }
+
+    .navbar .active {
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .app {
+    .navbar {
+      &__hamburger {
+        left: 10px;
+        width: 23px;
+        height: 15px;
+      }
+
+      &__hamburger.active {
+        height: 15px;
+      }
+    }
+  }
+}

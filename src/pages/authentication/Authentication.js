@@ -9,6 +9,7 @@ import Login from "../login/Login";
 import Registration from "../registration/Registration";
 
 import "./authentication.scss";
+import "./authenticationMedia.scss";
 
 function Authentication({ dataType, Component }) {
   const [error, setError] = useState(false);

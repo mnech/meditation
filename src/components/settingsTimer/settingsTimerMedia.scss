@@ -1,0 +1,49 @@
+@media (max-width: 1200px) {
+  .app {
+    .settings-timer {
+      &__value {
+        font-size: 3rem;
+      }
+
+      &__slider {
+        width: 25rem;
+        height: 2.8rem;
+      }
+
+      &__slider::-webkit-slider-thumb {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      &__slider::-moz-range-thumb {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .app {
+    .settings-timer {
+      &__value {
+        font-size: 2.3rem;
+      }
+
+      &__slider {
+        width: 20rem;
+        height: 2rem;
+      }
+
+      &__slider::-webkit-slider-thumb {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      &__slider::-moz-range-thumb {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+}

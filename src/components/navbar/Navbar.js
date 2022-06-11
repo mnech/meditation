@@ -1,6 +1,7 @@
 import PropTypes, { bool } from "prop-types";
 
 import "./navbar.scss";
+import "./navbarMedia.scss";
 
 function Navbar({ activeSidebar, setActiveSidebar }) {
   const openMenu = () => {

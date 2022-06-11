@@ -1,0 +1,75 @@
+@media (max-width: 1200px) {
+  .app {
+    .timer {
+      &__btn {
+        width: 2.8rem;
+        height: 2.8rem;
+
+        img {
+          width: 1.3rem;
+        }
+
+        &-main {
+          width: 3.5rem;
+          height: 3.5rem;
+
+          img {
+            width: 2rem;
+          }
+        }
+      }
+
+      &__time {
+        width: 18rem;
+        height: 18rem;
+
+        span {
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .app {
+    .timer {
+      &__time {
+        width: 13rem;
+        height: 13rem;
+
+        span {
+          font-size: 3rem;
+        }
+      }
+
+      &__btn {
+        width: 2rem;
+        height: 2rem;
+
+        &-main {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+    }
+
+    .modal {
+      &__title {
+        font-size: 1rem;
+      }
+
+      &__buttons {
+        margin-top: 1.5rem;
+      }
+
+      &__close {
+        width: 1.3rem;
+        height: 1.3rem;
+        margin-bottom: 1rem;
+        font-size: 3rem;
+        line-height: 1.3rem;
+      }
+    }
+  }
+}
