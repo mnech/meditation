@@ -48,3 +48,18 @@
     }
   }
 }
+
+// dark mode
+.app.dark {
+  .navbar {
+    background-color: var(--color-dark);
+
+    &__hamburger {
+      background-color: var(--color-dark);
+
+      span {
+        background-color: var(--primary-light);
+      }
+    }
+  }
+}

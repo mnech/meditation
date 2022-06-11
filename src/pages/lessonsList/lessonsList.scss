@@ -43,3 +43,11 @@
     }
   }
 }
+
+// dark mode
+.app.dark {
+  .lessons {
+    color: var(--primary-dark);
+    background-color: var(--primary-dark);
+  }
+}

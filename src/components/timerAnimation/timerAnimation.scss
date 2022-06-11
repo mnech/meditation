@@ -83,3 +83,27 @@
     margin: 0 1rem;
   }
 }
+
+// dark mode
+.app.dark {
+  .timer {
+    &__time {
+      background-color: var(--color-dark);
+      border: 2px solid var(--primary-light);
+      box-shadow: none;
+    }
+
+    &__buttons {
+      /* stylelint-disable-next-line no-descending-specificity */
+      :hover {
+        box-shadow: none;
+      }
+    }
+
+    &__btn {
+      &-main {
+        box-shadow: none;
+      }
+    }
+  }
+}

@@ -127,3 +127,20 @@
     }
   }
 }
+
+// dark mode
+.app.dark {
+  .sidebar {
+    &__content {
+      background-color: var(--color-dark);
+    }
+
+    &__menu {
+      ul {
+        :hover {
+          background-color: var(--color-dark);
+        }
+      }
+    }
+  }
+}
