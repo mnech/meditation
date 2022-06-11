@@ -167,13 +167,214 @@
 
 @media (max-width: 575px) {
   .app {
+    .btn {
+      padding: 0.3rem 1rem;
+      font-size: 1rem;
+    }
+
+    .sidebar {
+      &__top {
+        display: none;
+      }
+
+      hr {
+        border: none;
+      }
+
+      &__menu {
+        ul {
+          li {
+            font-size: 1rem;
+
+            img {
+              height: 1.2rem;
+            }
+
+            .logout {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+
+      &__bottom {
+        bottom: 5rem;
+
+        .switch {
+          span {
+            width: 2.5rem;
+            height: 1.3rem;
+          }
+
+          span::after {
+            width: 1rem;
+            height: 1rem;
+          }
+
+          input:checked + span::after {
+            left: calc(100% - 0.17rem);
+          }
+
+          img {
+            height: 1rem;
+          }
+        }
+      }
+    }
+
+    .navbar {
+      &__hamburger {
+        left: 10px;
+        width: 23px;
+        height: 15px;
+      }
+
+      &__hamburger.active {
+        height: 15px;
+      }
+    }
+
     .authentication {
+      .form {
+        padding: 0 1.5rem 2rem;
+      }
+
       input {
-        font-size: 1.1 rem;
+        font-size: 1rem;
       }
 
       .error {
-        font-size: 1.1rem;
+        font-size: 1rem;
+      }
+
+      .wrapper {
+        a {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .profile {
+      &__left {
+        flex: 1;
+      }
+
+      &__right {
+        flex: 1;
+      }
+
+      &__name,
+      &__email,
+      &__password-label {
+        font-size: 1rem;
+      }
+    }
+
+    .achivements {
+      &__desc {
+        font-size: 1rem;
+      }
+
+      &__img {
+        width: 4rem;
+      }
+    }
+
+    .lessons {
+      .lesson {
+        width: 15rem;
+        padding-bottom: 1.5rem;
+
+        &__name {
+          margin: 1.5rem auto 0;
+          font-size: 1rem;
+        }
+
+        &__done {
+          width: 1.5rem;
+        }
+      }
+    }
+
+    .single-lesson {
+      &__title {
+        font-size: 1rem;
+      }
+
+      &__content {
+        padding: 1rem 1rem;
+      }
+
+      &__desc {
+        font-size: 1rem;
+        line-height: 1.3rem;
+      }
+
+      img {
+        margin: 0 auto;
+
+        max-width: 20rem;
+        height: 100%;
+      }
+    }
+
+    .settings-timer {
+      &__value {
+        font-size: 2.3rem;
+      }
+
+      &__slider {
+        width: 20rem;
+        height: 2rem;
+      }
+
+      &__slider::-webkit-slider-thumb {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      &__slider::-moz-range-thumb {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+    .timer {
+      &__time {
+        width: 13rem;
+        height: 13rem;
+
+        span {
+          font-size: 3rem;
+        }
+      }
+
+      &__btn {
+        width: 2rem;
+        height: 2rem;
+
+        &-main {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+    }
+
+    .modal {
+      &__title {
+        font-size: 1rem;
+      }
+
+      &__buttons {
+        margin-top: 1.5rem;
+      }
+
+      &__close {
+        width: 1.3rem;
+        height: 1.3rem;
+        margin-bottom: 1rem;
+        font-size: 3rem;
+        line-height: 1.3rem;
       }
     }
   }
