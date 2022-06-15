@@ -1,3 +1,13 @@
+@media (max-width: 1200px) {
+  .app {
+    .single-lesson {
+      &__content {
+        padding: 1rem 5rem;
+      }
+    }
+  }
+}
+
 @media (max-width: 991px) {
   .app {
     .single-lesson {
