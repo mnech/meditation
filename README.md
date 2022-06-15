@@ -4,19 +4,19 @@ Meditation is project for learning basic meditation and improve your meditation 
 
 ## Getting started
 
-### Downlodad the project from github.
+Downlodad the project from github.
 
-## Create file ".env" in your project root folder and write in it:
+##Create file ".env" in your project root folder and write the API key in it:
 
-### `REACT_APP_API_KEY` = `your API key`
+`REACT_APP_API_KEY` = `your API key`
 
-In the project directory, you can run:
+## Run in the project directory:
 
-## ## Install NPM packages
+Install NPM packages
 
 ### `npm install`
 
-## Start the project
+Start the project
 
 ### `npm start`
 
