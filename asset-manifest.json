@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/meditation/static/css/main.23ed285f.css",
-    "main.js": "/meditation/static/js/main.d2e9c3a7.js",
+    "main.js": "/meditation/static/js/main.9353eeed.js",
     "static/css/422.d8feff53.chunk.css": "/meditation/static/css/422.d8feff53.chunk.css",
     "static/js/422.134c8f54.chunk.js": "/meditation/static/js/422.134c8f54.chunk.js",
     "static/css/182.161c9006.chunk.css": "/meditation/static/css/182.161c9006.chunk.css",
@@ -46,7 +46,7 @@
     "static/media/start.svg": "/meditation/static/media/start.929dc31154eeebdffe2b013f9d3f888f.svg",
     "static/media/stop.svg": "/meditation/static/media/stop.5f4ae1d3e5627c95a0b2088248a679e1.svg",
     "main.23ed285f.css.map": "/meditation/static/css/main.23ed285f.css.map",
-    "main.d2e9c3a7.js.map": "/meditation/static/js/main.d2e9c3a7.js.map",
+    "main.9353eeed.js.map": "/meditation/static/js/main.9353eeed.js.map",
     "422.d8feff53.chunk.css.map": "/meditation/static/css/422.d8feff53.chunk.css.map",
     "422.134c8f54.chunk.js.map": "/meditation/static/js/422.134c8f54.chunk.js.map",
     "182.161c9006.chunk.css.map": "/meditation/static/css/182.161c9006.chunk.css.map",
@@ -68,6 +68,6 @@
   },
   "entrypoints": [
     "static/css/main.23ed285f.css",
-    "static/js/main.d2e9c3a7.js"
+    "static/js/main.9353eeed.js"
   ]
 }
