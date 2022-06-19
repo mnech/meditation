@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/meditation/static/css/main.23ed285f.css",
-    "main.js": "/meditation/static/js/main.18dfafa6.js",
+    "main.js": "/meditation/static/js/main.57ad3f0a.js",
     "static/css/422.d8feff53.chunk.css": "/meditation/static/css/422.d8feff53.chunk.css",
     "static/js/422.134c8f54.chunk.js": "/meditation/static/js/422.134c8f54.chunk.js",
     "static/css/182.161c9006.chunk.css": "/meditation/static/css/182.161c9006.chunk.css",
@@ -34,10 +34,10 @@
     "static/media/meditation.svg": "/meditation/static/media/meditation.a6097dccfa7ec86696c31ad2bfd99bbc.svg",
     "static/media/sun.svg": "/meditation/static/media/sun.1f45581636b5f1f2c8f805dd32ff5240.svg",
     "static/media/timer.svg": "/meditation/static/media/timer.dbc27d7cf611fe0f8dc3b9ae7655c082.svg",
+    "index.html": "/meditation/index.html",
     "static/media/study.svg": "/meditation/static/media/study.5618e5c7db91b96c8bcf11cadd2350ac.svg",
     "static/media/user.svg": "/meditation/static/media/user.11ea9a8b2899b1cc4ea0526013df7d69.svg",
     "static/media/done.svg": "/meditation/static/media/done.6ce722dbf869e926411368b5ace35ca4.svg",
-    "index.html": "/meditation/index.html",
     "static/media/logout.svg": "/meditation/static/media/logout.8167a9b903ef5f9892a5249c1ed34ca4.svg",
     "static/media/moon.svg": "/meditation/static/media/moon.c80079bf87048190df13b8bf0ed07049.svg",
     "static/media/reset.svg": "/meditation/static/media/reset.196c0e3c39c105f1fa7a25b21f9ecb80.svg",
@@ -46,7 +46,7 @@
     "static/media/start.svg": "/meditation/static/media/start.929dc31154eeebdffe2b013f9d3f888f.svg",
     "static/media/stop.svg": "/meditation/static/media/stop.5f4ae1d3e5627c95a0b2088248a679e1.svg",
     "main.23ed285f.css.map": "/meditation/static/css/main.23ed285f.css.map",
-    "main.18dfafa6.js.map": "/meditation/static/js/main.18dfafa6.js.map",
+    "main.57ad3f0a.js.map": "/meditation/static/js/main.57ad3f0a.js.map",
     "422.d8feff53.chunk.css.map": "/meditation/static/css/422.d8feff53.chunk.css.map",
     "422.134c8f54.chunk.js.map": "/meditation/static/js/422.134c8f54.chunk.js.map",
     "182.161c9006.chunk.css.map": "/meditation/static/css/182.161c9006.chunk.css.map",
@@ -68,6 +68,6 @@
   },
   "entrypoints": [
     "static/css/main.23ed285f.css",
-    "static/js/main.18dfafa6.js"
+    "static/js/main.57ad3f0a.js"
   ]
 }
