@@ -2,7 +2,7 @@
 
 Meditation is project for learning basic meditation and improve your meditation skill.
 
-## Live demo: [https://mfilatkina.github.io/meditation/](https://mfilatkina.github.io/meditation/)
+## `Live demo`: [https://mfilatkina.github.io/meditation/](https://mfilatkina.github.io/meditation/)
 
 ## Getting started
 
