@@ -17,7 +17,7 @@ function App() {
   const classes = darkMode ? "app dark" : "app";
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className={classes}>
         <Navbar
           activeSidebar={activeSidebar}
