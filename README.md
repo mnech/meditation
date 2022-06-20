@@ -21,3 +21,5 @@ Start the project:
 ### `npm start`
 
 Open [http://localhost:3000](http://localhost:3000) to view project in your browser.
+
+Live demo: [https://mfilatkina.github.io/meditation/] (https://mfilatkina.github.io/meditation/)
