@@ -1,10 +1,16 @@
+import { useEffect } from "react";
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import CustomInput from "../../components/customInput/CustomInput";
 
-function Registration({ error, onSubmitForm }) {
+function Registration({ error, setError, onSubmitForm }) {
+  useEffect(() => {
+    setError(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="registration">
       <Formik
@@ -54,11 +60,13 @@ function Registration({ error, onSubmitForm }) {
 
 Registration.propTypes = {
   error: PropTypes.bool,
+  setError: PropTypes.func,
   onSubmitForm: PropTypes.func,
 };
 
 Registration.defaultProps = {
   error: false,
+  setError: () => {},
   onSubmitForm: () => {},
 };
 

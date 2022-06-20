@@ -36,7 +36,11 @@ function Authentication({ dataType, Component }) {
 
   return (
     <div className="authentication">
-      <Component error={error} onSubmitForm={onSubmitForm} />
+      <Component
+        error={error}
+        setError={setError}
+        onSubmitForm={onSubmitForm}
+      />
     </div>
   );
 }

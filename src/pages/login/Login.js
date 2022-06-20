@@ -1,9 +1,15 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
 import CustomInput from "../../components/customInput/CustomInput";
 
-function Login({ error, onSubmitForm }) {
+function Login({ error, setError, onSubmitForm }) {
+  useEffect(() => {
+    setError(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="login">
       <Formik
@@ -40,11 +46,13 @@ function Login({ error, onSubmitForm }) {
 
 Login.propTypes = {
   error: PropTypes.bool,
+  setError: PropTypes.func,
   onSubmitForm: PropTypes.func,
 };
 
 Login.defaultProps = {
   error: false,
+  setError: () => {},
   onSubmitForm: () => {},
 };
 
