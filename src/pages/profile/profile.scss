@@ -25,38 +25,20 @@
     border-radius: 100%;
   }
 
+  &__load-label {
+    width: 8.2rem;
+  }
+
   &__load {
-    width: 8rem;
-    margin-bottom: 1rem;
+    width: 0;
+    height: 0;
     color: transparent;
   }
 
   &__load::-webkit-file-upload-button {
+    width: 0;
+    height: 0;
     visibility: hidden;
-  }
-
-  &__load::before {
-    display: inline-block;
-    color: var(--primary-dark);
-    font-weight: 500;
-    font-size: 1rem;
-    white-space: nowrap;
-    outline: none;
-    cursor: pointer;
-    content: "Загрузить аватар \2B73";
-    user-select: none;
-  }
-
-  &__load:hover::before {
-    color: var(--primary);
-  }
-
-  &__load:active {
-    outline: 0;
-  }
-
-  &__load:disabled::before {
-    color: var(--color-grey-dark);
   }
 
   &__name,

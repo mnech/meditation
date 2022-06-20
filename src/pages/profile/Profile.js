@@ -89,13 +89,18 @@ function Profile() {
         <div className="profile__wrapper">
           <div className="profile__left">
             {imgContent}
-            <input
-              type="file"
-              accept=".jpg, .jpeg, .png"
-              className="profile__load"
-              onChange={changeFile}
-              disabled={loading}
-            />
+            <label htmlFor="load_label" className="profile__load-label">
+              Загрузить аватар &#11123;
+              <input
+                id="load_label"
+                type="file"
+                accept=".jpg, .jpeg, .png"
+                className="profile__load"
+                onChange={changeFile}
+                disabled={loading}
+              />
+            </label>
+
             {errorMsg}
           </div>
           <div className="profile__right">
