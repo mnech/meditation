@@ -90,7 +90,7 @@ function Profile() {
           <div className="profile__left">
             {imgContent}
             <label htmlFor="load_label" className="profile__load-label">
-              Загрузить аватар &#11123;
+              Загрузить аватар &#10515;
               <input
                 id="load_label"
                 type="file"
