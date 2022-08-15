@@ -1,25 +1,35 @@
-# What is Meditation
+# What is Meditation? :information_desk_person:
 
-Meditation is project for learning basic meditation and improve your meditation skill.
+:herb: Meditation is project for learning basic meditation and improve your meditation skill.
 
-## `Live demo`: [https://mfilatkina.github.io/meditation/](https://mfilatkina.github.io/meditation/)
+### You can:
 
-## Getting started
+:sunglasses: Create own profile
+:rainbow: Learn meditation technics
+:alarm_clock: Use timer for your meditation
+:rocket: Track your meditation progress
+:first_quarter_moon: Use light or dark mode
 
-Downlodad the project from github.
+### Live demo: [https://mfilatkina.github.io/meditation/](https://mfilatkina.github.io/meditation/)
 
-## Create file ".env" in project root folder and write the API key in it:
+![Application main page](https://raw.githubusercontent.com/mfilatkina/meditation/main/screenshots/main_page.png)
 
-`REACT_APP_API_KEY` = `your API key`
+### Getting started
 
-## Run in the project directory:
+:heavy_check_mark: Downlodad the project from github.
 
-Install NPM packages:
+### Create file ".env" in project root folder and write the API key in it:
 
-### `npm install`
+:heavy_check_mark: `REACT_APP_API_KEY` = `your API key`
 
-Start the project:
+### Run in the project directory:
 
-### `npm start`
+:heavy_check_mark: Install NPM packages:
 
-Open [http://localhost:3000](http://localhost:3000) to view project in your browser.
+#### `npm install`
+
+:heavy_check_mark: Start the project:
+
+#### `npm start`
+
+:heavy_check_mark: Open [http://localhost:3000](http://localhost:3000) to view project in your browser :tada:
