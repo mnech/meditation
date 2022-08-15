@@ -4,10 +4,10 @@
 
 ### You can:
 
-:sunglasses: Create own profile
-:rainbow: Learn meditation technics
-:alarm_clock: Use timer for your meditation
-:rocket: Track your meditation progress
+:sunglasses: Create own profile  
+:rainbow: Learn meditation technics  
+:alarm_clock: Use timer for your meditation  
+:rocket: Track your meditation progress  
 :first_quarter_moon: Use light or dark mode
 
 ### Live demo: [https://mfilatkina.github.io/meditation/](https://mfilatkina.github.io/meditation/)
