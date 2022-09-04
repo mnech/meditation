@@ -10,9 +10,9 @@
 :rocket: Track your meditation progress \
 :first_quarter_moon: Use light or dark mode
 
-### Live demo: [https://mfilatkina.github.io/meditation/](https://mfilatkina.github.io/meditation/)
+### Live demo: [https://mnech.github.io/meditation/](https://mnech.github.io/meditation/)
 
-![Application main page](https://raw.githubusercontent.com/mfilatkina/meditation/main/screenshots/main_page.png)
+![Application main page](https://raw.githubusercontent.com/mnech/meditation/main/screenshots/main_page.png)
 
 ### Getting started
 
